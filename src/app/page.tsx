@@ -1,6 +1,6 @@
 function Home() {
   return (
-    <div></div>
+    <div>instalar o padrão de commit (husky e convencional commit)</div>
   )
 }
 
