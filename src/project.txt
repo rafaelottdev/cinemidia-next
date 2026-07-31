@@ -1,0 +1,28 @@
+Refatorar Para Nextjs
+
+    - Não utilizar IA, verificar primeiro docs e depois sites (stackoverflow, etc.). Evitar IA a todo custo, por ultimo
+
+O que pode ser melhorado
+
+    - colocar loading real com skelletom (ao entrar no site, ao ir para filmes, series, +populares e watchlist), da pra fazer   boundary ja que o header e o titulo é estatico, ou seja, colocar para carregar só a seção que aparece os filmes (com eskelleton)
+
+    - Melhorar o watchlist, tanto a forma que adiciona e que remove, tanto a pagina (aviso quando não tiver nada, etc.) (um aviso que adicionou/excluiu)
+
+    - fazer um card para os filmes, ou seja, não deixar apenas a capa, mas colocar mais algumas informações, titulo, botão de adicionar pra watchlist, etc. Melhorar os cards de filmes e séries (buscar alguma inspiração)
+
+    - melhorar essa transição da home pra segunda seção, o botão ta ruim
+
+    - melhorar os titulos (filmes, series e watchlist) (talvez adicionar uma linha no meio -- FILMES -- ou algo a mais)
+
+    - melhorar as cores?
+
+
+O que pode ser adicionado
+
+    - Ao clicar no filme ir para a pagina do filme no TMDB
+
+    - no watchlist talvez colocar umas sugestões de filmes, talvez uns 3 ou 5 (como um instante de livros, na verdade vai ter o titulo sugestões e embaixo um retangulo com varios filmes cortados, ao dar hover no filme ou clicar ele assume o retangulo todo) e o resto vai pra tras
+
+observações
+
+    - no header a gente teve um problema por causa do posicionamento do logo e das navegações ver sobre esse erro, acho que o logo ta no meio nos elementos e isso dificultou algo, dar uma olhada
