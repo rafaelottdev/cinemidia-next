@@ -1,0 +1,37 @@
+@use "../../styles/abstracts/variables" as *
+    
+.header
+    width: 100vw
+    height: $header-height
+
+    position: fixed
+    
+    background-color: $header-bg
+
+.nav
+    height: 100%
+
+.nav_list
+    height: 100%
+    padding-top: 15px
+
+    display: flex
+    align-items: center
+    justify-content: space-evenly
+
+    z-index: 1
+
+    li
+
+        a
+            padding: 2px 15px
+
+            font-size: $header-font-size
+            font-family: $header-font
+            letter-spacing: $header-letter-spacing
+
+            color: $header-color
+
+.logo
+    width: 60px
+    height: 60px

@@ -1,7 +1,11 @@
-function Home() {
+import Home from "@/components/Home/Home"
+
+function Page() {
   return (
-    <div></div>
+    <>
+      <Home />
+    </>
   )
 }
 
-export default Home
+export default Page
