@@ -7,4 +7,4 @@ const tmdbData: TmdbData = {
     TMBD_IMG_URL_500: "https://image.tmdb.org/t/p/w500"
 }
 
-export default { tmdbData }
+export default tmdbData
