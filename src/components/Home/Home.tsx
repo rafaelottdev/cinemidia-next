@@ -18,8 +18,8 @@ async function Home() {
                 <SliderBackground selectedPopularMovies={selectedPopularMovies} genresList={genresList} />
             </section>
 
-            <section>
-                <SliderCover />
+            <section className={styles.poster_fixed}>
+                <SliderCover selectedPopularMovies={selectedPopularMovies} />
             </section>
         </section>
     )

@@ -14,10 +14,21 @@
 @use "../../styles/abstracts/_variables" as *
         
 .home_section
+    width: 100vw
     height: 100vh
 
     position: absolute
 
 .background_fixed
-    width: 100vw
-    height: $header-height
+    width: 100%
+    height: 100%
+    // height: $header-height
+
+.poster_fixed
+    padding: 15px 0 15px 15px;
+        
+    position: absolute
+    left: 50px
+    bottom: 50px
+
+    overflow-x: hidden

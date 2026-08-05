@@ -4,8 +4,6 @@ import tmdbData from "@/config/tmdb"
 import { PopularMovies } from "@/types/popularMovies"
 import { Genres } from "@/types/genres"
 
-import { useEffect } from "react"
-
 import styles from "./SliderBackground.module.sass"
 
 interface MovieList {
@@ -36,7 +34,11 @@ function SliderBackground({ selectedPopularMovies, genresList }: MovieList) {
 
                                 <div className={styles.movie_data}>
                                     <div className={styles.movie_rate}>
-                                        {movieInfo.vote_average}
+                                        { movieInfo.vote_average?.toFixed(1) ?? '0.0' }
+
+                                        <svg viewBox="0 0 20 19">
+                                            <path d="M3.825 19L5.45 11.975L0 7.25L7.2 6.625L10 0L12.8 6.625L20 7.25L14.55 11.975L16.175 19L10 15.275L3.825 19Z"/>
+                                        </svg>
                                     </div>
 
                                     <ul className={styles.movie_genres}>
