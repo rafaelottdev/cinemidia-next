@@ -1,0 +1,39 @@
+@use "../../styles/abstracts/mixins" as *
+@use "../../styles/abstracts/variables" as *
+    
+.slide_control_container
+    width: 100%
+
+    display: flex
+    justify-content: center
+    gap: 5px
+
+    position: absolute
+    bottom: 10px
+
+.slide_control_button
+    width: 30px
+    height: 30px
+
+    cursor: pointer
+
+    display: flex
+    align-items: center
+    justify-content: center
+
+    background-color: $secondary-bg
+
+    user-select: none
+
+    &:hover
+        background-color: $primary-bg
+
+    svg
+        width: 13px
+        fill: rgba(255, 255, 255, 0.5)
+
+    &:first-child
+        @include border-radius(left)
+
+    &:last-child
+        @include border-radius(right)

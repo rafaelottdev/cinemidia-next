@@ -23,7 +23,7 @@ function Header() {
                     </li>
 
                     <li>
-                        <Link href="/popular">+Populares</Link>
+                        <Link href="/popular">Populares</Link>
                     </li>
 
                     <li>

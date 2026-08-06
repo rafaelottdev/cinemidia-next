@@ -1,5 +1,10 @@
 @use "../../styles/abstracts/variables" as *
 @use "../../styles/abstracts/mixins" as *
+
+.background_fixed
+    width: 100%
+    height: 100%
+    // height: $header-height
     
 .slider_container
     display: flex
@@ -7,8 +12,8 @@
     transition: transform 0.4s ease
 
 .movie_wrapp_item
-    min-width: 100vw
-    height: 100vh
+    min-width: $background-width
+    height: $background-height
 
     position: relative
 
@@ -44,9 +49,9 @@
     font-size: $primary-font-size
     letter-spacing: $movie-data-letter-spacing
 
-    @include border-right-radius
-
-    background-color: $movie-data-bg
+    @include border-radius(right)
+    
+    background-color: $secondary-bg
 
 .movie_rate
     display: flex

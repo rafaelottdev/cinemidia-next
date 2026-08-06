@@ -1,3 +1,14 @@
+@use "../../styles/abstracts/variables" as *
+    
+.poster_fixed
+    padding: 15px 0 15px 15px
+        
+    position: absolute
+    left: 50px
+    bottom: 50px
+
+    overflow-x: hidden
+    
 .slider_container
     display: flex
     justify-content: space-evenly
@@ -5,8 +16,8 @@
     gap: 20px
 
 .movie_wrapp_item
-    width: 215px
-    height: 280px
+    width: $poster-width
+    height: $poster-height
 
     border-radius: 20px
     overflow: hidden

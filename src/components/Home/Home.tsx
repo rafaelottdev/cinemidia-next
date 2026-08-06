@@ -1,26 +1,19 @@
 import getPopularMovies from "@/lib/getPopularMovies"
+import getGenres from "@/lib/getGenres"
 
-import SliderBackground from "../SliderBackground/SliderBackground"
-import SliderCover from "../SliderCover/SliderCover"
+import HomeSlider from "../HomeSlider/HomeSlider"
 
 import styles from "./Home.module.sass"
-import getGenres from "@/lib/getGenres"
 
 async function Home() {
     const popularMovies = await getPopularMovies()
-    const selectedPopularMovies = popularMovies.slice(0, 8)
 
+    const selectedPopularMovies = popularMovies.slice(0, 8)
     const genresList = await getGenres()
 
     return (
         <section className={styles.home_section}>
-            <section className={styles.background_fixed}>
-                <SliderBackground selectedPopularMovies={selectedPopularMovies} genresList={genresList} />
-            </section>
-
-            <section className={styles.poster_fixed}>
-                <SliderCover selectedPopularMovies={selectedPopularMovies} />
-            </section>
+            <HomeSlider selectedPopularMovies={selectedPopularMovies} genresList={genresList} />
         </section>
     )
 }

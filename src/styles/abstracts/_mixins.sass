@@ -1,9 +1,11 @@
+@use "../abstracts/variables" as *
+    
 @mixin bg-img 
     background-position: center
     background-repeat: no-repeat
     background-size: cover
     filter: brightness(65%)
 
-@mixin border-right-radius
-    border-bottom-right-radius: 10px
-    border-top-right-radius: 10px
+@mixin border-radius($direction)
+    border-top-#{$direction}-radius: $primary-border-radius
+    border-bottom-#{$direction}-radius: $primary-border-radius
