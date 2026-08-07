@@ -6,6 +6,9 @@ import HomeSlider from "../HomeSlider/HomeSlider"
 import styles from "./Home.module.sass"
 
 async function Home() {
+    // Fake delay function
+    await new Promise((resolve) => setTimeout(resolve, 100000))
+
     const popularMovies = await getPopularMovies()
 
     const selectedPopularMovies = popularMovies.slice(0, 8)
@@ -13,7 +16,9 @@ async function Home() {
 
     return (
         <section className={styles.home_section}>
-            <HomeSlider selectedPopularMovies={selectedPopularMovies} genresList={genresList} />
+            <div className={styles.home_wrapp}>
+                <HomeSlider selectedPopularMovies={selectedPopularMovies} genresList={genresList} />
+            </div>
         </section>
     )
 }
