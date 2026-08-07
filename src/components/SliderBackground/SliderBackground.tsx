@@ -9,12 +9,13 @@ import styles from "./SliderBackground.module.sass"
 interface MovieList {
     selectedPopularMovies: PopularMovies[]
     genresList: Genres[]
+    currentIndex: number
 }
 
-function SliderBackground({ selectedPopularMovies, genresList }: MovieList) {
+function SliderBackground({ selectedPopularMovies, genresList, currentIndex }: MovieList) {
     return (
         <div className={styles.background_fixed}>
-            <ul className={styles.slider_container}>
+            <ul className={styles.slider_container} style={{ transform: `translateX(-${currentIndex*100}vw)` }}>
                 {
                     selectedPopularMovies.map((movieInfo: PopularMovies) => {
                         const currentGenres = genresList.filter((genre: Genres) => movieInfo.genre_ids.includes(genre.id)).slice(0, 3)

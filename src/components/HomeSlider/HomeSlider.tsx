@@ -7,7 +7,7 @@ import SliderBackground from "../SliderBackground/SliderBackground"
 import SliderCover from "../SliderCover/SliderCover"
 import SlideControl from "../SlideControl/SlideControl"
 
-import { useEffect, useState } from "react"
+import { useState } from "react"
 
 interface TmdbData {
     selectedPopularMovies: PopularMovies[]
@@ -16,40 +16,28 @@ interface TmdbData {
 
 function HomeSlider({ selectedPopularMovies, genresList }: TmdbData) {
     let [currentIndex, setCurrentIndex] = useState<number>(0)
-    let [currentWindowWidth, setCurrentWindowWidth] = useState<number>(0)
+    let currentIndexPoster: number = currentIndex * 235
     const popularMoviesLength = Math.min(selectedPopularMovies.length, 8)
 
-    useEffect(() => {
-        function updateWindowWidth() {
-            setCurrentWindowWidth(window.innerWidth)
-        }
-
-        updateWindowWidth()
-        window.addEventListener("resize", updateWindowWidth)
-
-
-        return () => window.removeEventListener("resize", updateWindowWidth)
-    }, [])
-
     function leftClick() {
-        // if(currentIndex > 0) {
-        // }
+        if(currentIndex > 0) {
+            setCurrentIndex(currentIndex -= 1)
+        }
     }
 
     function rightClick() {
-        // if(currentIndex < 8) {
-        // }
+        if(currentIndex < (popularMoviesLength-1)) {
+            setCurrentIndex(currentIndex += 1)
+        }
     }
 
     return (
         <>
-            <SliderBackground selectedPopularMovies={selectedPopularMovies} genresList={genresList} />
+            <SliderBackground selectedPopularMovies={selectedPopularMovies} genresList={genresList} currentIndex={currentIndex} />
 
-            <SliderCover selectedPopularMovies={selectedPopularMovies} />
+            <SliderCover selectedPopularMovies={selectedPopularMovies} currentIndex={currentIndex} currentIndexPoster={currentIndexPoster} />
 
             <SlideControl rightClick={rightClick} leftClick={leftClick} />
-
-            {currentWindowWidth}
         </>
     )
 }
