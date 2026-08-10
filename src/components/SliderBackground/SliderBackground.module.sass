@@ -15,12 +15,14 @@
     height: $background-height
 
     position: relative
+    background-color: #1c1a1a
 
 .movie_img
     width: 100%
     height: 100%
 
-    @include bg-img
+    object-fit: cover
+    filter: brightness(55%)
 
 .movie_info_container
     position: absolute

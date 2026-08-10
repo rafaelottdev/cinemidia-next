@@ -1,17 +1,24 @@
 "use client"
 
+import { MouseEventHandler } from "react"
 import styles from "./SlideControl.module.sass"
 
-function SlideControl({ rightClick, leftClick }: { rightClick: any, leftClick: any }) {
+interface ClickFunc {
+    leftClick: MouseEventHandler<HTMLButtonElement>
+    rightClick: MouseEventHandler<HTMLButtonElement>
+    currentIndex: number
+}
+
+function SlideControl({ rightClick, leftClick, currentIndex }: ClickFunc) {
     return (
         <div className={styles.slide_control_container}>
-            <button className={styles.slide_control_button} onClick={leftClick}>
+            <button className={`${styles.slide_control_button} ${currentIndex <= 0 ? styles.blocked : ""}`} onClick={leftClick}>
                 <svg viewBox="0 0 13 13">
                     <path d="M1.08819 4.77951C0.759555 4.94552 0.484663 5.19334 0.292968 5.49643C0.101273 5.79951 0 6.14643 0 6.50001C0 6.85359 0.101273 7.2005 0.292968 7.50359C0.484663 7.80667 0.759555 8.05449 1.08819 8.22051L9.85458 12.7489C11.2662 13.4788 13 12.5299 13 11.0291V1.97159C13 0.470136 11.2662 -0.478186 9.85458 0.250442L1.08819 4.77951Z"/>
                 </svg>
             </button>
             
-            <button className={styles.slide_control_button} onClick={rightClick}>
+            <button className={`${styles.slide_control_button} ${currentIndex >= 7 ? styles.blocked : ""}`} onClick={rightClick}>
                 <svg viewBox="0 0 13 13" style={{ transform: "rotateY(180deg)" }}>
                     <path d="M1.08819 4.77951C0.759555 4.94552 0.484663 5.19334 0.292968 5.49643C0.101273 5.79951 0 6.14643 0 6.50001C0 6.85359 0.101273 7.2005 0.292968 7.50359C0.484663 7.80667 0.759555 8.05449 1.08819 8.22051L9.85458 12.7489C11.2662 13.4788 13 12.5299 13 11.0291V1.97159C13 0.470136 11.2662 -0.478186 9.85458 0.250442L1.08819 4.77951Z"/>
                 </svg>

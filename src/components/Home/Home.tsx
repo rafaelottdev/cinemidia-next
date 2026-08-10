@@ -6,9 +6,6 @@ import HomeSlider from "../HomeSlider/HomeSlider"
 import styles from "./Home.module.sass"
 
 async function Home() {
-    // Fake delay function
-    await new Promise((resolve) => setTimeout(resolve, 100000))
-
     const popularMovies = await getPopularMovies()
 
     const selectedPopularMovies = popularMovies.slice(0, 8)

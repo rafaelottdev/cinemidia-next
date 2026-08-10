@@ -19,17 +19,11 @@ function SliderBackground({ selectedPopularMovies, genresList, currentIndex }: M
                 {
                     selectedPopularMovies.map((movieInfo: PopularMovies) => {
                         const currentGenres = genresList.filter((genre: Genres) => movieInfo.genre_ids.includes(genre.id)).slice(0, 3)
+                        const url = `${tmdbData.TMDB_IMG_URL}/w1280${movieInfo.backdrop_path}`
 
                         return (
                             <li key={movieInfo.id} className={styles.movie_wrapp_item}>
-                                <div
-                                    style={{ 
-                                        backgroundImage: `url(${tmdbData.TMDB_IMG_URL}/original${movieInfo.backdrop_path})` 
-                                    }}
-                                    
-                                    className={styles.movie_img}
-                                >
-                                </div>
+                                <img src={url} alt="Fundo do site" className={styles.movie_img} />
 
                                 <div className={styles.movie_info_container}>
                                     <h1 className={styles.movie_title}>{movieInfo.title}</h1>

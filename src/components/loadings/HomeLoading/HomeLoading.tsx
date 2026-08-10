@@ -12,21 +12,21 @@ function HomeLoading() {
             </div>
 
             <div className={styles.skeleton_cover}>
-                <div></div>
+                <div className={styles.cover}></div>
 
-                <div></div>
+                <div className={styles.cover}></div>
 
-                <div></div>
+                <div className={styles.cover}></div>
 
-                <div></div>
+                <div className={styles.cover}></div>
 
-                <div></div>
+                <div className={styles.cover}></div>
 
-                <div></div>
+                <div className={styles.cover}></div>
 
-                <div></div>
+                <div className={styles.cover}></div>
 
-                <div></div>
+                <div className={styles.cover}></div>
             </div>
 
             <div className={styles.skeleton_slide_control}>

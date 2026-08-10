@@ -37,7 +37,7 @@ function HomeSlider({ selectedPopularMovies, genresList }: TmdbData) {
 
             <SliderCover selectedPopularMovies={selectedPopularMovies} currentIndex={currentIndex} currentIndexPoster={currentIndexPoster} />
 
-            <SlideControl rightClick={rightClick} leftClick={leftClick} />
+            <SlideControl rightClick={rightClick} leftClick={leftClick} currentIndex={currentIndex} />
         </>
     )
 }

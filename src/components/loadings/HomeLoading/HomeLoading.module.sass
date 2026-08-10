@@ -23,7 +23,7 @@
         transform-origin: left
 
         background: #ffffff03
-        animation: loading 1.2s linear infinite
+        animation: loading 1s linear infinite
 
 .skeleton_movie_info
     position: absolute
@@ -56,7 +56,7 @@
         transform-origin: left
 
         background: #ffffff03
-        animation: loading 1.2s linear infinite
+        animation: loading 1s linear infinite
 
 .skeleton_data
     width: 310px
@@ -80,7 +80,7 @@
         transform-origin: left
 
         background: #ffffff03
-        animation: loading 1.2s linear infinite
+        animation: loading 1s linear infinite
             
 .skeleton_cover
     position: absolute
@@ -90,13 +90,27 @@
     display: flex
     gap: 20px
 
-    div
-        width: 215px
-        height: 280px
+.cover
+    width: 215px
+    height: 280px
 
-        border-radius: 20px
+    border-radius: 20px
+    position: relative
 
-        background-color: #080808
+    background-color: #080808
+
+    &::after
+        width: 0%
+        height: 100%
+
+        content: ""
+        position: absolute
+        inset: 0
+
+        transform-origin: left
+
+        background: #ffffff03
+        animation: loading 1s linear infinite
 
 .skeleton_slide_control
     width: 100vw
