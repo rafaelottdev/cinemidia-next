@@ -1,30 +1,31 @@
 @use "../../styles/abstracts/variables" as *
+@use "../../styles/abstracts/mixins" as *
     
-.logo_item
-    
-
 .logo_link
-        display: flex
-        align-items: center
-        gap: 3px
-        // background: red
+        @include flex-center
+
+        gap: 1px
+
+        &:hover div
+            width: 110px
 
         div
-            width: 100%
-            display: flex
+            width: 0px
+            padding: 1px 0
+
+            @include flex-center
+
             gap: 3px
             overflow: hidden
-            background-color: green
 
-            transition: 1s
+            border-radius: 3px
+            background-color: $header-bg
+            transition: .3s
 
             span
-                font-family: $font1
-
-                &:not(:last-child)
-                    color: white
+                color: $primary-color
+                font-family: $logo-font
 
 .logo
     width: 35px
     height: 35px
-    // background: blue
