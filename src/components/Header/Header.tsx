@@ -19,6 +19,9 @@ function Header() {
     }
 
     useEffect(() => {
+        if(window.scrollY > 0) {
+            setScrolled(true)
+        }
         window.addEventListener("scroll", handleScroll)
 
         return () => window.removeEventListener("scroll", handleScroll)
