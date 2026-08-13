@@ -27,7 +27,9 @@ async function Releases() {
                 }
             </ul>
 
-            <div className={styles.bg_bow}></div>
+            <div className={styles.bg_bow}>
+                {/* <img src="/arco.png" alt="fundo" /> */}
+            </div>
         </section>
     )
 }

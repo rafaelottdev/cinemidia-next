@@ -30,17 +30,19 @@ function ReleaseCard({ movie, currentGenres }: MovieList) {
                     <img src={`${tmdbData.TMBD_IMG_URL_500}${movie.poster_path}`} alt="poster do filme" width={50} height={50} />
                 </div>
 
-                <div className={styles.movie_info}>
-                    <div>
+                <div className={styles.movie_data}>
+                    <div className={styles.movie_info}>
                         <h2>{movie.title}</h2>
 
-                        <div>
+                        <div className={styles.movie_description}>
                             <p>{movie.overview}</p>
+
+                            <span>...</span>
                         </div>
                     </div>
 
-                    <div>
-                        <ul>
+                    <div className={styles.genres_wrapp}>
+                        <ul className={styles.genres_list}>
                             {
                                 currentGenres.map((genre: Genres) => (
                                     <li key={genre.id}>

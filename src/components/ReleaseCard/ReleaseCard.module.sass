@@ -1,5 +1,8 @@
+@use "../../styles/abstracts/variables" as *
+@use "../../styles/abstracts/mixins" as *
+    
 .movie_card
-    align-self: start
+    
 
 .movie_link
     width: 600px
@@ -11,14 +14,13 @@
 
     border-radius: 40px
 
-    background-color: red
+    background-color: #EDEDED
 
 .img_wrapp
     width: 170px
     height: 230px
 
     flex-shrink: 0
-    background: blue
 
     img
         width: 100%
@@ -27,7 +29,67 @@
         object-fit: cover
         display: block
 
+.movie_data
+    display: flex
+    justify-content: center
+
+    gap: 15px
+    flex-direction: column
+
+    font-family: $movie-data-font
+    color: black
+
 .movie_info
-    background-color: purple
+    padding: 0 20px
+    
+    h2
+        margin-bottom: 15px
+        font-size: 21px
+        font-family: $secondary-font
+        letter-spacing: 1px
+
+.movie_description
+    height: 80px
+    position: relative
+
+    p
+        overflow: hidden
+        height: 66px
+        font-size: 13px
+        letter-spacing: .5px
+
+    span
+        position: absolute
+        left: 0
+        bottom: 0px
+
+.genres_wrapp
+    display: flex
+    align-items: center
+
+.genres_list
+    height: 25px
+    padding: 0px 15px
+    display: flex
+    align-items: center
+    gap: 10px
+    font-size: 12px
+    border-bottom-right-radius: 5px
+    border-top-right-radius: 5px
+
+    color: white
+    background-color: #0F0F0F
 
 .release_date
+    padding: 3px 15px
+    position: absolute
+    top: 15px
+    right: -15px
+    transform: rotateZ(30deg)
+    text-transform: capitalize
+    font-size: 13px
+    letter-spacing: .5px
+    font-family: $release-date-font
+    color: white
+    border-radius: 8px
+    background-color: #3A075C
