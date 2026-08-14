@@ -1,9 +1,6 @@
 @use "../../styles/abstracts/variables" as *
 @use "../../styles/abstracts/mixins" as *
     
-.movie_card
-    
-
 .movie_link
     width: 600px
     height: 230px
@@ -14,7 +11,11 @@
 
     border-radius: 40px
 
-    background-color: #EDEDED
+    background-color: $card-bg
+    transition: .3s
+
+    &:hover
+        transform: scale(1.1)
 
 .img_wrapp
     width: 170px
@@ -27,14 +28,12 @@
         height: 100%
 
         object-fit: cover
-        display: block
 
 .movie_data
     display: flex
-    justify-content: center
-
-    gap: 15px
     flex-direction: column
+    justify-content: center
+    gap: 15px
 
     font-family: $movie-data-font
     color: black
@@ -44,6 +43,7 @@
     
     h2
         margin-bottom: 15px
+
         font-size: 21px
         font-family: $secondary-font
         letter-spacing: 1px
@@ -53,8 +53,9 @@
     position: relative
 
     p
-        overflow: hidden
         height: 66px
+        overflow: hidden
+
         font-size: 13px
         letter-spacing: .5px
 
@@ -70,9 +71,11 @@
 .genres_list
     height: 25px
     padding: 0px 15px
+
     display: flex
     align-items: center
     gap: 10px
+
     font-size: 12px
     border-bottom-right-radius: 5px
     border-top-right-radius: 5px
@@ -82,14 +85,17 @@
 
 .release_date
     padding: 3px 15px
+
     position: absolute
     top: 15px
     right: -15px
     transform: rotateZ(30deg)
     text-transform: capitalize
+
     font-size: 13px
     letter-spacing: .5px
     font-family: $release-date-font
-    color: white
+
     border-radius: 8px
+    color: white
     background-color: #3A075C
