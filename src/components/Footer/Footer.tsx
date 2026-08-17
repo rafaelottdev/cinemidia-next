@@ -1,6 +1,10 @@
+import styles from "./Footer.module.sass"
+
 function Footer() {
     return (
-        <footer>Footer</footer>
+        <footer className={styles.footer_section}>
+            <p>© 2026 Rafaelottdev</p>
+        </footer>
     )
 }
 
