@@ -1,7 +1,11 @@
-function Films() {
+import styles from "./page.module.sass"
+
+function Movies() {
     return (
-        <div>FILMES</div>
+        <section className={styles.movies_page}>
+            filmes
+        </section>
     )
 }
 
-export default Films
+export default Movies
