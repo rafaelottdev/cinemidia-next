@@ -1,0 +1,74 @@
+.loading
+    padding: 80px 0px
+
+    display: grid
+    grid-template-columns: repeat(2, 1fr)
+    gap: 50px
+
+    place-items: center
+
+    background-color: #1c1a1a
+
+.skeleton_card
+    width: 600px
+    height: 230px
+
+    display: flex
+    position: relative
+    overflow: hidden
+
+    border-radius: 40px
+
+    background-color: #080808
+
+.skeleton_img_wrapp
+    width: 170px
+    height: 230px
+
+    flex-shrink: 0
+    background-color: black
+            
+
+.skeleton_data_container
+    display: flex
+    flex-direction: column
+    justify-content: center
+    gap: 15px
+
+.skeleton_info_container
+    padding: 0 20px
+    
+    div
+        &:first-child
+            width: 200px
+            height: 30px
+            margin-bottom: 15px
+
+            background-color: black
+
+        &:last-child
+            width: 380px
+            height: 90px
+
+            background-color: black
+
+.skeleton_genres_container
+    width: 200px
+    height: 25px
+
+    border-bottom-right-radius: 5px
+    border-top-right-radius: 5px
+
+    background-color: black
+
+.skeleton_release_container
+    width: 100px
+    height: 30px
+
+    position: absolute
+    top: 15px
+    right: -15px
+    transform: rotateZ(30deg)
+
+    border-radius: 8px
+    background-color: black
