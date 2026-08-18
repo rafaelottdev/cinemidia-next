@@ -10,20 +10,20 @@ export const metadata: Metadata = {
   description: "Site sobre filmes",
   icons: {
     icon: "/favicon.ico",
-    shortcut: '/favicon-16x16.png',
-    apple: '/apple-touch-icon.png'
-  }
+    shortcut: "/favicon-16x16.png",
+    apple: "/apple-touch-icon.png",
+  },
 }
 
-export default function RootLayout({ children }: Readonly<{ children: React.ReactNode}>) {
+export default function RootLayout({
+  children,
+}: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="pt-BR">
       <body>
         <Header />
 
-        <main>
-          {children}
-        </main>
+        <main>{children}</main>
 
         <Footer />
       </body>
