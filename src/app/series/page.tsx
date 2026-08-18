@@ -1,7 +1,5 @@
 function Series() {
-    return (
-        <div>SÉRIES</div>
-    )
+  return <div>SÉRIES</div>
 }
 
 export default Series
