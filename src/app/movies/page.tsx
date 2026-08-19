@@ -1,5 +1,5 @@
-import getMovies from "@/lib/getMovies"
 import MovieList from "@/components/MovieList/MovieList"
+import getMovies from "@/lib/getMovies"
 import styles from "./page.module.sass"
 
 async function Movies() {
