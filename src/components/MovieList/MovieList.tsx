@@ -1,16 +1,24 @@
 "use client"
 
 import { useEffect, useState } from "react"
+import getMovies from "@/lib/getMovies"
 import type { PopularMovies } from "@/types/popularMovies"
+import Card from "../Card/Card"
 
 // import styles from "./MovieList.module.sass"
 
-interface Movies {
-  movies: PopularMovies[]
-}
-
-function MovieList({ movies }: Movies) {
+function MovieList() {
   const [currentPage, setCurrentPage] = useState<number>(1)
+  const [movies, setMovies] = useState<PopularMovies[]>([])
+
+  useEffect(() => {
+    async function getMovieList() {
+      const movieList = await getMovies(currentPage)
+      setMovies((previousMovies) => [...previousMovies, ...movieList])
+    }
+
+    getMovieList()
+  }, [currentPage])
 
   useEffect(() => {
     const intersectionObserver = new IntersectionObserver((entries) => {
@@ -28,11 +36,11 @@ function MovieList({ movies }: Movies) {
 
   return (
     <ul>
-      <div>Pagina atual: {currentPage}</div>
+      {movies.map((movie: PopularMovies) => {
+        const randomKey = crypto.randomUUID()
 
-      {movies.map((movie: PopularMovies) => (
-        <li key={movie.id}>{movie.title}</li>
-      ))}
+        return <Card key={randomKey} movie={movie} />
+      })}
 
       <li id="sentinel"></li>
     </ul>
