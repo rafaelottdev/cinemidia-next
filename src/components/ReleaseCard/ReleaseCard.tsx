@@ -1,6 +1,7 @@
 import Image from "next/image"
 import Link from "next/link"
 import tmdbData from "@/config/tmdb"
+import formatDate from "@/lib/formatDate"
 import type { Genres } from "@/types/genres"
 import type { PopularMovies } from "@/types/popularMovies"
 import styles from "./ReleaseCard.module.sass"
@@ -11,17 +12,6 @@ interface MovieList {
 }
 
 function ReleaseCard({ movie, currentGenres }: MovieList) {
-  function formatDate(dateString: string) {
-    if (!dateString) return "Sem Data"
-
-    const date = new Date(dateString)
-
-    return date.toLocaleDateString("pt-br", {
-      day: "numeric",
-      month: "long",
-    })
-  }
-
   return (
     <li className={styles.movie_card}>
       <Link href="/" className={styles.movie_link}>
