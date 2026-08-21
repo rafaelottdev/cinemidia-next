@@ -1,6 +1,6 @@
 import Image from "next/image"
 import Link from "next/link"
-// import { FaRegBookmark } from "react-icons/fa"
+import { FaRegBookmark } from "react-icons/fa"
 import { IoAddOutline } from "react-icons/io5"
 import tmdbData from "@/config/tmdb"
 import formatDate from "@/lib/formatDate"
@@ -24,9 +24,15 @@ function Card({ movie }: Movie) {
           />
 
           <button type="button" className={styles.add_watchlist_btn}>
-            <IoAddOutline />
+            <div>
+              <span className={styles.icon_wrapp}>
+                <IoAddOutline />
+              </span>
 
-            {/* <FaRegBookmark /> */}
+              <span className={styles.icon_wrapp}>
+                <FaRegBookmark />
+              </span>
+            </div>
           </button>
         </div>
 
