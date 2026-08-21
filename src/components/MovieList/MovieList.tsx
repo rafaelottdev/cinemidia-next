@@ -5,7 +5,7 @@ import getMovies from "@/lib/getMovies"
 import type { PopularMovies } from "@/types/popularMovies"
 import Card from "../Card/Card"
 
-// import styles from "./MovieList.module.sass"
+import styles from "./MovieList.module.sass"
 
 function MovieList() {
   const [currentPage, setCurrentPage] = useState<number>(1)
@@ -35,7 +35,7 @@ function MovieList() {
   }, [])
 
   return (
-    <ul>
+    <ul className={styles.movie_list}>
       {movies.map((movie: PopularMovies) => {
         const randomKey = crypto.randomUUID()
 
