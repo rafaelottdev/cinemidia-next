@@ -4,6 +4,8 @@ import Footer from "@/components/Footer/Footer"
 import Header from "@/components/Header/Header"
 
 import "../styles/globals.sass"
+import "../styles/pages/catalog.sass"
+import "../styles/components/catalogList.sass"
 
 export const metadata: Metadata = {
   title: "Cinemidia",

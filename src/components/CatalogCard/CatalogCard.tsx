@@ -5,20 +5,21 @@ import { IoAddOutline } from "react-icons/io5"
 import tmdbData from "@/config/tmdb"
 import formatDate from "@/lib/formatDate"
 import type { PopularMovies } from "@/types/popularMovies"
-import styles from "./Card.module.sass"
+import type { Series } from "@/types/series"
+import styles from "./CatalogCard.module.sass"
 
-interface Movie {
-  movie: PopularMovies
+interface Catalog {
+  catalog: PopularMovies | Series
 }
 
-function Card({ movie }: Movie) {
+function Card({ catalog }: Catalog) {
   return (
     <li>
       <Link href="/" className={styles.movie_container}>
         <div className={styles.movie_img_wrapp}>
           <Image
-            src={`${tmdbData.TMBD_IMG_URL_300}${movie.poster_path}`}
-            alt={`Imagem do filme ${movie.title}`}
+            src={`${tmdbData.TMBD_IMG_URL_300}${catalog.poster_path}`}
+            alt={`Imagem do filme ${"title" in catalog ? catalog.title : catalog.name}`}
             width={200}
             height={270}
           />
@@ -38,11 +39,13 @@ function Card({ movie }: Movie) {
 
         <div className={styles.movie_footer}>
           <div className={styles.movie_title_container}>
-            <p>{movie.title}</p>
+            <p>{"title" in catalog ? catalog.title : catalog.name}</p>
           </div>
 
           <p className={styles.movie_release_date}>
-            {formatDate(movie.release_date, true)}
+            {"release_date" in catalog
+              ? formatDate(catalog.release_date, true)
+              : (catalog.vote_average?.toFixed(1) ?? "0.0")}
           </p>
         </div>
       </Link>
