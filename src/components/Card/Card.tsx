@@ -17,10 +17,10 @@ function Card({ movie }: Movie) {
       <Link href="/" className={styles.movie_container}>
         <div className={styles.movie_img_wrapp}>
           <Image
-            src={`${tmdbData.TMBD_IMG_URL_500}${movie.poster_path}`}
-            alt={`Imagem do ${movie.title}`}
+            src={`${tmdbData.TMBD_IMG_URL_300}${movie.poster_path}`}
+            alt={`Imagem do filme ${movie.title}`}
             width={200}
-            height={280}
+            height={270}
           />
 
           <button type="button" className={styles.add_watchlist_btn}>
