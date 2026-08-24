@@ -29,7 +29,7 @@ function SliderCover({
               className={`${styles.movie_wrapp_item} ${id === currentIndex ? `${styles.active}` : ""}`}
             >
               <Image
-                src={`${tmdbData.TMBD_IMG_URL_500}${movieInfo.poster_path}`}
+                src={`${tmdbData.TMBD_IMG_URL_300}${movieInfo.poster_path}`}
                 alt="poster do filme"
                 className={styles.poster_img}
                 width={215}

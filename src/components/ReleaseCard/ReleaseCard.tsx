@@ -17,7 +17,7 @@ function ReleaseCard({ movie, currentGenres }: MovieList) {
       <Link href="/" className={styles.movie_link}>
         <div className={styles.img_wrapp}>
           <Image
-            src={`${tmdbData.TMBD_IMG_URL_500}${movie.poster_path}`}
+            src={`${tmdbData.TMBD_IMG_URL_300}${movie.poster_path}`}
             alt="poster do filme"
             width={500}
             height={500}
