@@ -1,5 +1,5 @@
+import { LuClapperboard } from "react-icons/lu"
 import MovieList from "@/components/MovieList/MovieList"
-import { LuClapperboard, LuTv } from "react-icons/lu"
 import styles from "./page.module.sass"
 
 async function Movies() {
@@ -10,7 +10,7 @@ async function Movies() {
           <span></span>
 
           <LuClapperboard />
-          
+
           <h2 className={styles.movies_title}>Filmes</h2>
 
           <span></span>
