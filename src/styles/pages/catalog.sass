@@ -1,14 +1,14 @@
 @use "../../styles/abstracts/variables" as *
 @use "../../styles/abstracts/mixins" as *
     
-.movies_page
+.catalog_page
     min-height: calc(100vh - 30px) // screen height minus footer height
     padding: $header-height 0px 50px 0px
 
     color: white
     background-color: #0F0F0F
 
-.movies_title_container
+.catalog_title_container
     margin: 60px 0 50px 0
     @include flex-center
     user-select: none
@@ -17,7 +17,7 @@
         margin-bottom: 2px
         font-size: 21px
 
-.movies_title_wrapp
+.catalog_title_wrapp
     padding: 3px 25px
 
     @include flex-center
@@ -43,7 +43,7 @@
         &:last-child
             margin-left: 10px
 
-.movies_title
+.catalog_title
     font-size: 27px
     font-family: $secondary-font
     letter-spacing: 2px

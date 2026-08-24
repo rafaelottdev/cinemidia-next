@@ -1,21 +1,21 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import getMovies from "@/lib/getMovies"
-import type { PopularMovies } from "@/types/popularMovies"
+import getSeries from "@/lib/getSeries"
+import type { Series } from "@/types/series"
 import CatalogCard from "../CatalogCard/CatalogCard"
 
-function MovieList() {
+function SeriesList() {
   const [currentPage, setCurrentPage] = useState<number>(1)
-  const [movies, setMovies] = useState<PopularMovies[]>([])
+  const [series, setSeries] = useState<Series[]>([])
 
   useEffect(() => {
-    async function getMovieList() {
-      const movieList = await getMovies(currentPage)
-      setMovies((previousMovies) => [...previousMovies, ...movieList])
+    async function getSeriesList() {
+      const seriesList = await getSeries(currentPage)
+      setSeries((previousSeries) => [...previousSeries, ...seriesList])
     }
 
-    getMovieList()
+    getSeriesList()
   }, [currentPage])
 
   useEffect(() => {
@@ -34,10 +34,10 @@ function MovieList() {
 
   return (
     <ul className="catalog_list">
-      {movies.map((movie: PopularMovies) => {
+      {series.map((serie) => {
         const randomKey = crypto.randomUUID()
 
-        return <CatalogCard key={randomKey} catalog={movie} />
+        return <CatalogCard key={randomKey} catalog={serie} />
       })}
 
       <li id="sentinel"></li>
@@ -45,4 +45,4 @@ function MovieList() {
   )
 }
 
-export default MovieList
+export default SeriesList
