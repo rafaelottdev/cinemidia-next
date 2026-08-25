@@ -1,0 +1,72 @@
+import Image from "next/image"
+import tmdbData from "@/config/tmdb"
+import type { Genres } from "@/types/genres"
+import type { PopularMovies } from "@/types/popularMovies"
+import styles from "./PopularSlider.module.sass"
+
+interface TmdbData {
+  selectedPopularMovies: PopularMovies[]
+  genresList: Genres[]
+}
+
+function PopularSlider({ selectedPopularMovies, genresList }: TmdbData) {
+  return (
+    <div className={styles.slider_container}>
+      <button type="button" className={styles.slider_control_btn}>
+        <svg viewBox="0 0 13 13">
+          <title>Seta de controle para a esquerda</title>
+          <path d="M1.08819 4.77951C0.759555 4.94552 0.484663 5.19334 0.292968 5.49643C0.101273 5.79951 0 6.14643 0 6.50001C0 6.85359 0.101273 7.2005 0.292968 7.50359C0.484663 7.80667 0.759555 8.05449 1.08819 8.22051L9.85458 12.7489C11.2662 13.4788 13 12.5299 13 11.0291V1.97159C13 0.470136 11.2662 -0.478186 9.85458 0.250442L1.08819 4.77951Z" />
+        </svg>
+      </button>
+
+      <ul className={styles.slider_list}>
+        {selectedPopularMovies.map((movie) => {
+          const backgroundUrl = `${tmdbData.TMDB_IMG_URL}/w1280${movie.backdrop_path}`
+          const posterUrl = `${tmdbData.TMDB_IMG_URL}/w185${movie.poster_path}`
+
+          return (
+            <li key={movie.id} className={styles.slider_item}>
+              <Image
+                src={backgroundUrl}
+                alt={`fundo do filme ${movie.title}`}
+                width={1000}
+                height={500}
+                className={styles.background_img}
+              />
+
+              <div className={styles.movie_data}>
+                <h3 className={styles.movie_title}>{movie.title}</h3>
+
+                <div className={styles.movie_info}>
+                  <p className={styles.movie_overview}>{movie.overview}</p>
+
+                  <ul className={styles.movie_genres_list}>
+                    {genresList.map((genre) => genre.name)}
+                  </ul>
+                </div>
+              </div>
+
+              <div className={styles.poster_wrapp}>
+                <Image
+                  src={posterUrl}
+                  alt={`Poster do filme ${movie.title}`}
+                  width={80}
+                  height={100}
+                />
+              </div>
+            </li>
+          )
+        })}
+      </ul>
+
+      <button type="button" className={styles.slider_control_btn}>
+        <svg viewBox="0 0 13 13" style={{ transform: "rotateY(180deg)" }}>
+          <title>Seta de controle para a direita</title>
+          <path d="M1.08819 4.77951C0.759555 4.94552 0.484663 5.19334 0.292968 5.49643C0.101273 5.79951 0 6.14643 0 6.50001C0 6.85359 0.101273 7.2005 0.292968 7.50359C0.484663 7.80667 0.759555 8.05449 1.08819 8.22051L9.85458 12.7489C11.2662 13.4788 13 12.5299 13 11.0291V1.97159C13 0.470136 11.2662 -0.478186 9.85458 0.250442L1.08819 4.77951Z" />
+        </svg>
+      </button>
+    </div>
+  )
+}
+
+export default PopularSlider

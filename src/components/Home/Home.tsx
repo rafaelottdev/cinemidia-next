@@ -7,7 +7,6 @@ import styles from "./Home.module.sass"
 
 async function Home() {
   const popularMovies = await getPopularMovies()
-
   const selectedPopularMovies = popularMovies.slice(0, 8)
   const genresList = await getGenres()
 
