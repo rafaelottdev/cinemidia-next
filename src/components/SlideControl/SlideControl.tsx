@@ -1,21 +1,26 @@
 "use client"
 
-import type { MouseEventHandler } from "react"
+import { leftClick } from "@/lib/leftClick"
+import { rightClick } from "@/lib/rightClick"
 import styles from "./SlideControl.module.sass"
 
-interface ClickFunc {
-  leftClick: MouseEventHandler<HTMLButtonElement>
-  rightClick: MouseEventHandler<HTMLButtonElement>
+interface SliderInfo {
   currentIndex: number
+  setCurrentIndex: React.Dispatch<React.SetStateAction<number>>
+  popularMoviesLength: number
 }
 
-function SlideControl({ rightClick, leftClick, currentIndex }: ClickFunc) {
+function SlideControl({
+  currentIndex,
+  setCurrentIndex,
+  popularMoviesLength,
+}: SliderInfo) {
   return (
     <div className={styles.slide_control_container}>
       <button
-        className={`${styles.slide_control_button} ${currentIndex <= 0 ? styles.blocked : ""}`}
-        onClick={leftClick}
         type="button"
+        className={`${styles.slide_control_button} ${currentIndex <= 0 ? styles.blocked : ""}`}
+        onClick={() => leftClick(currentIndex, setCurrentIndex)}
       >
         <svg viewBox="0 0 13 13">
           <title>Seta de controle para a esquerda</title>
@@ -24,9 +29,11 @@ function SlideControl({ rightClick, leftClick, currentIndex }: ClickFunc) {
       </button>
 
       <button
-        className={`${styles.slide_control_button} ${currentIndex >= 7 ? styles.blocked : ""}`}
-        onClick={rightClick}
         type="button"
+        className={`${styles.slide_control_button} ${currentIndex >= 7 ? styles.blocked : ""}`}
+        onClick={() =>
+          rightClick(currentIndex, setCurrentIndex, popularMoviesLength)
+        }
       >
         <svg viewBox="0 0 13 13" style={{ transform: "rotateY(180deg)" }}>
           <title>Seta de controle para a direita</title>
