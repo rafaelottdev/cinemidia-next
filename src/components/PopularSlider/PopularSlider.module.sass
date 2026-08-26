@@ -3,7 +3,9 @@
   
 .slider_container
   width: 1000px
-  height: 500px
+  height: 450px
+
+  margin: 40px 0 0 0
 
   position: relative
   overflow: hidden
@@ -24,6 +26,9 @@
 
   background-color: $secondary-bg
 
+  &:hover
+    background-color: $primary-bg
+
   svg
     width: 15px
     fill: rgba(255, 255, 255, 0.5)
@@ -40,10 +45,22 @@
 
     @include border-radius(right)
 
+.blocked
+  background-color: #cccccc0d
+  cursor: auto
+
+  &:hover
+    background-color: #cccccc0d
+
+  svg
+    fill: rgba(255, 255, 255, 0.066)
+
 .slider_list
   height: 100%
   display: flex
   background: black
+
+  transition: $smooth-slide
 
 .slider_item
   min-width: 100%
@@ -59,15 +76,21 @@
   z-index: 0
 
   object-fit: cover
-  filter: brightness(55%)
+  filter: brightness(20%)
 
 .movie_data
   width: 500px
+  margin: 100px 0px 0px 130px
+
   z-index: 1
   position: relative
-  background: red
 
 .movie_title
+  margin-bottom: 15px
+  display: flex
+  align-items: center
+  gap: 20px
+
   font-size: 1.7em
   letter-spacing: 1.5px
   font-family: $secondary-font
@@ -75,15 +98,99 @@
 .movie_info
   
 .movie_overview
+  margin-bottom: 20px
+
   font-size: 13px
   font-family: $movie-data-font
   line-height: 1.3rem
   letter-spacing: $movie-data-letter-spacing
+  text-align: justify
 
 .movie_genres_list
   display: flex
+  gap: 20px
 
   li
+    padding: 5px 10px
+
+    font-size: 12px
+    font-family: $movie-data-font
+    text-transform: capitalize
+    letter-spacing: .5px
     
+    border-radius: 20px
+    color: #ffffffe1
+    background: rgba(255, 255, 255, 0.2)
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1)
+    backdrop-filter: blur(5px)
 
 .poster_wrapp
+  display: flex
+  flex-direction: column
+  align-items: center
+  gap: 5px
+
+  position: absolute
+  bottom: 30px
+  right: 130px
+
+  img
+    width: 120px
+    height: 160px
+    border-radius: 10px
+
+    transition: .3s ease
+
+    &:has(+ .see_more_link:hover)
+      transform: scale(.9)
+
+.see_more_link
+  width: 95px
+  height: 20px
+
+  @include flex-center
+
+  position: relative
+  overflow: hidden
+
+  font-size: 11px
+  font-family: $movie-data-font
+  letter-spacing: .3px
+
+  border-radius: 3px
+  color: #ffffffac
+  background: rgba(255, 255, 255, 0.099)
+
+  &:hover
+    span
+      &:first-child
+          width: 0%
+          z-index:0
+
+      &:last-child
+          width: 100%
+          z-index:1
+          background-color: $header-bg
+
+  span
+    height: 100%
+
+    @include flex-center
+    position: absolute
+    left: 0
+
+    overflow: hidden
+    border-radius: 5px
+
+    transition: .3s
+
+    &:first-child
+      width: 100%
+      z-index: 1
+      
+    &:last-child
+      width: 0%
+      z-index: 0
+
+      svg
+        font-size: 14px
