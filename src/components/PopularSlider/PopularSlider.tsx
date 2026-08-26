@@ -1,4 +1,9 @@
+"use client"
+
 import Image from "next/image"
+import Link from "next/link"
+// import { useState } from "react"
+import { TbShare3 } from "react-icons/tb"
 import tmdbData from "@/config/tmdb"
 import type { Genres } from "@/types/genres"
 import type { PopularMovies } from "@/types/popularMovies"
@@ -10,6 +15,9 @@ interface TmdbData {
 }
 
 function PopularSlider({ selectedPopularMovies, genresList }: TmdbData) {
+  // const [currentIndex, setCurrentIndex] = useState<number>(0)
+  // const popularMoviesLength = Math.min(selectedPopularMovies.length, 8)
+
   return (
     <div className={styles.slider_container}>
       <button type="button" className={styles.slider_control_btn}>
@@ -23,6 +31,9 @@ function PopularSlider({ selectedPopularMovies, genresList }: TmdbData) {
         {selectedPopularMovies.map((movie) => {
           const backgroundUrl = `${tmdbData.TMDB_IMG_URL}/w1280${movie.backdrop_path}`
           const posterUrl = `${tmdbData.TMDB_IMG_URL}/w185${movie.poster_path}`
+          const currentGenres = genresList
+            .filter((genre: Genres) => movie.genre_ids.includes(genre.id))
+            .slice(0, 3)
 
           return (
             <li key={movie.id} className={styles.slider_item}>
@@ -41,7 +52,9 @@ function PopularSlider({ selectedPopularMovies, genresList }: TmdbData) {
                   <p className={styles.movie_overview}>{movie.overview}</p>
 
                   <ul className={styles.movie_genres_list}>
-                    {genresList.map((genre) => genre.name)}
+                    {currentGenres.map((genre: Genres) => (
+                      <li key={genre.id}>{genre.name}</li>
+                    ))}
                   </ul>
                 </div>
               </div>
@@ -53,6 +66,14 @@ function PopularSlider({ selectedPopularMovies, genresList }: TmdbData) {
                   width={80}
                   height={100}
                 />
+
+                <Link href="/" className={styles.see_more_link}>
+                  <span>Ver Mais</span>
+
+                  <span>
+                    <TbShare3 />
+                  </span>
+                </Link>
               </div>
             </li>
           )
