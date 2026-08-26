@@ -15,19 +15,7 @@ interface TmdbData {
 function HomeSlider({ selectedPopularMovies, genresList }: TmdbData) {
   const [currentIndex, setCurrentIndex] = useState<number>(0)
   const currentIndexPoster: number = currentIndex * 235
-  const popularMoviesLength = Math.min(selectedPopularMovies.length, 8)
-
-  function leftClick() {
-    if (currentIndex > 0) {
-      setCurrentIndex(currentIndex - 1)
-    }
-  }
-
-  function rightClick() {
-    if (currentIndex < popularMoviesLength - 1) {
-      setCurrentIndex(currentIndex + 1)
-    }
-  }
+  const popularMoviesLength = selectedPopularMovies.length - 1
 
   return (
     <>
@@ -44,9 +32,9 @@ function HomeSlider({ selectedPopularMovies, genresList }: TmdbData) {
       />
 
       <SlideControl
-        rightClick={rightClick}
-        leftClick={leftClick}
         currentIndex={currentIndex}
+        setCurrentIndex={setCurrentIndex}
+        popularMoviesLength={popularMoviesLength}
       />
     </>
   )
