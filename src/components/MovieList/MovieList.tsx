@@ -4,18 +4,26 @@ import { useEffect, useState } from "react"
 import getMovies from "@/lib/getMovies"
 import type { PopularMovies } from "@/types/popularMovies"
 import CatalogCard from "../CatalogCard/CatalogCard"
+import CatalogLoading from "../loadings/CatalogLoading/CatalogLoading"
 
 function MovieList() {
   const [currentPage, setCurrentPage] = useState<number>(1)
   const [movies, setMovies] = useState<PopularMovies[]>([])
+  const [loading, setLoading] = useState<boolean>(true)
 
   useEffect(() => {
-    async function getMovieList() {
-      const movieList = await getMovies(currentPage)
-      setMovies((previousMovies) => [...previousMovies, ...movieList])
-    }
+    try {
+      async function getMovieList() {
+        const movieList = await getMovies(currentPage)
+        setMovies((previousMovies) => [...previousMovies, ...movieList])
+      }
 
-    getMovieList()
+      getMovieList()
+    } catch (error) {
+      console.log(error)
+    } finally {
+      setLoading(false)
+    }
   }, [currentPage])
 
   useEffect(() => {
@@ -32,17 +40,21 @@ function MovieList() {
     return () => intersectionObserver.disconnect()
   }, [])
 
-  return (
-    <ul className="catalog_list">
-      {movies.map((movie: PopularMovies) => {
-        const randomKey = crypto.randomUUID()
+  if (loading) {
+    return <CatalogLoading />
+  } else {
+    return (
+      <ul className="catalog_list">
+        {movies.map((movie: PopularMovies) => {
+          const randomKey = crypto.randomUUID()
 
-        return <CatalogCard key={randomKey} catalog={movie} />
-      })}
+          return <CatalogCard key={randomKey} catalog={movie} />
+        })}
 
-      <li id="sentinel"></li>
-    </ul>
-  )
+        <li id="sentinel"></li>
+      </ul>
+    )
+  }
 }
 
 export default MovieList
