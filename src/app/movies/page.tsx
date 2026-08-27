@@ -1,6 +1,4 @@
-import { Suspense } from "react"
 import { LuClapperboard } from "react-icons/lu"
-import CatalogLoading from "@/components/loadings/CatalogLoading/CatalogLoading"
 import MovieList from "@/components/MovieList/MovieList"
 
 async function Movies() {
@@ -18,9 +16,7 @@ async function Movies() {
         </div>
       </div>
 
-      <Suspense fallback={<CatalogLoading />}>
-        <MovieList />
-      </Suspense>
+      <MovieList />
     </section>
   )
 }
