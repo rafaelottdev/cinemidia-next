@@ -1,0 +1,77 @@
+.loading
+  display: flex
+  justify-content: center
+  flex-wrap: wrap
+  gap: 35px
+  
+  div
+    width: 200px
+    position: relative
+
+    div
+      background: black
+
+      &:first-child
+        width: 200px
+        height: 270px
+        margin-bottom: 10px
+        position: relative
+
+        border-radius: 15px
+
+        &::after
+          width: 0%
+          height: 100%
+
+          content: ""
+          position: absolute
+          inset: 0
+
+          transform-origin: left
+
+          background-color: #ffffff04
+          animation: loading 1s linear infinite
+
+      &:nth-child(2)
+        width: 140px
+        height: 15px
+        margin-bottom: 5px
+        margin-left: 3px
+
+        &::after
+          width: 0%
+          height: 100%
+
+          content: ""
+          position: absolute
+          inset: 0
+
+          transform-origin: left
+
+          background-color: #ffffff04
+          animation: loading 1s linear infinite
+        
+      &:last-child
+        width: 80px
+        height: 10px
+        margin-left: 3px
+
+        &::after
+          width: 0%
+          height: 100%
+
+          content: ""
+          position: absolute
+          inset: 0
+
+          transform-origin: left
+
+          background-color: #ffffff04
+          animation: loading 1s linear infinite
+
+@keyframes loading 
+  from
+      width: 0%
+  
+  to
+      width: 100%
