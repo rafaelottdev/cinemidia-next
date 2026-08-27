@@ -1,0 +1,160 @@
+@use "../../../styles/abstracts/mixins" as *
+@use "../../../styles/abstracts/variables" as *
+  
+.loading
+
+.card_loading
+  width: 1000px
+  height: 450px
+
+  margin: 40px 0 0 0
+  padding: 100px 0px 0px 130px
+
+  position: relative
+
+  border-radius: 50px
+  background: #080808
+
+.button_loading
+  width: 30px
+  height: 30px
+
+  position: absolute
+  transform: translateY(-50%)
+
+  background-color: #363434
+
+  &:first-child
+    top: 50%
+    left: 30px
+    
+    @include border-radius(left)
+
+  &:last-child
+    top: 50%
+    right: 30px
+
+    @include border-radius(right)
+
+.data_loading
+  width: 500px
+
+  div
+    &:first-child
+      width: 250px
+      height: 25px
+      margin-bottom: 15px
+      position: relative
+      background-color: #1c1a1a
+
+      &::after
+        width: 0%
+        height: 100%
+
+        content: ""
+        position: absolute
+        inset: 0
+
+        transform-origin: left
+
+        background: #ffffff03
+        animation: loading 1s linear infinite
+
+    &:nth-child(2)
+      width: 500px
+      height: 130px
+      margin-bottom: 20px
+      position: relative
+      background-color: #1c1a1a
+
+      &::after
+        width: 0%
+        height: 100%
+
+        content: ""
+        position: absolute
+        inset: 0
+
+        transform-origin: left
+
+        background: #ffffff03
+        animation: loading 1s linear infinite
+
+    &:last-child
+      width: 230px
+      height: 20px
+      position: relative
+      background-color: #1c1a1a
+
+      &::after
+        width: 0%
+        height: 100%
+
+        content: ""
+        position: absolute
+        inset: 0
+
+        transform-origin: left
+
+        background: #ffffff03
+        animation: loading 1s linear infinite
+
+.more_loading
+  width: 120px
+
+  display: flex
+  flex-direction: column
+  align-items: center
+  gap: 5px
+
+  position: absolute
+  bottom: 30px
+  right: 130px
+
+  div
+    &:first-child
+      width: 120px
+      height: 155px
+      position: relative
+      border-radius: 10px
+      background-color: #1c1a1a
+
+      &::after
+        width: 0%
+        height: 100%
+
+        content: ""
+        position: absolute
+        inset: 0
+
+        transform-origin: left
+
+        background: #ffffff03
+        animation: loading 1s linear infinite
+      
+    &:last-child
+      width: 95px
+      height: 20px
+      position: relative
+      border-radius: 3px
+      background-color: #1c1a1a
+
+      &::after
+        width: 0%
+        height: 100%
+
+        content: ""
+        position: absolute
+        inset: 0
+
+        transform-origin: left
+
+        background: #ffffff03
+        animation: loading 1s linear infinite
+      
+@keyframes loading 
+    from
+        width: 0%
+    
+    to
+        width: 100%
