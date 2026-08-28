@@ -2,10 +2,10 @@
 
 import { useEffect, useState } from "react"
 import getSeries from "@/lib/getSeries"
+import type { PopularMovies } from "@/types/popularMovies"
 import type { Series } from "@/types/series"
 import CatalogCard from "../CatalogCard/CatalogCard"
 import CatalogLoading from "../loadings/CatalogLoading/CatalogLoading"
-import { PopularMovies } from "@/types/popularMovies"
 
 function SeriesList() {
   const [currentPage, setCurrentPage] = useState<number>(1)
@@ -23,8 +23,8 @@ function SeriesList() {
           const newSeries = seriesList.filter(
             (series: PopularMovies) =>
               !previousSeries.some(
-                (previousSeries) => previousSeries.id === series.id
-              )
+                (previousSeries) => previousSeries.id === series.id,
+              ),
           )
 
           return [...previousSeries, ...newSeries]
