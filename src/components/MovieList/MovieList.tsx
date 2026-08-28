@@ -12,24 +12,36 @@ function MovieList() {
   const [loading, setLoading] = useState<boolean>(true)
 
   useEffect(() => {
-    try {
-      async function getMovieList() {
-        const movieList = await getMovies(currentPage)
-        setMovies((previousMovies) => [...previousMovies, ...movieList])
-      }
+    async function getMovieList() {
+      try {
+        setLoading(true)
 
-      getMovieList()
-    } catch (error) {
-      console.log(error)
-    } finally {
-      setLoading(false)
+        const movieList = await getMovies(currentPage)
+
+        setMovies((previousMovies) => {
+          const newMovies = movieList.filter(
+            (movie: PopularMovies) =>
+              !previousMovies.some(
+                (previousMovies) => previousMovies.id === movie.id,
+              ),
+          )
+
+          return [...previousMovies, ...newMovies]
+        })
+      } catch (error) {
+        console.log(error)
+      } finally {
+        setLoading(false)
+      }
     }
+
+    getMovieList()
   }, [currentPage])
 
   useEffect(() => {
     const intersectionObserver = new IntersectionObserver((entries) => {
-      if (entries.some((entry) => entry.isIntersecting)) {
-        setCurrentPage((currentPageInsideState) => currentPageInsideState + 1)
+      if (entries.some((entry) => entry.isIntersecting) && !loading) {
+        setCurrentPage((previousPage) => previousPage + 1)
       }
     })
 
@@ -38,23 +50,19 @@ function MovieList() {
     if (sentinel) intersectionObserver.observe(sentinel)
 
     return () => intersectionObserver.disconnect()
-  }, [])
+  }, [loading])
 
-  if (loading) {
-    return <CatalogLoading />
-  } else {
-    return (
-      <ul className="catalog_list">
-        {movies.map((movie: PopularMovies) => {
-          const randomKey = crypto.randomUUID()
+  return (
+    <ul className="catalog_list">
+      {movies.map((movie: PopularMovies) => (
+        <CatalogCard key={movie.id} catalog={movie} />
+      ))}
 
-          return <CatalogCard key={randomKey} catalog={movie} />
-        })}
+      {loading && <CatalogLoading />}
 
-        <li id="sentinel"></li>
-      </ul>
-    )
-  }
+      <li id="sentinel"></li>
+    </ul>
+  )
 }
 
 export default MovieList

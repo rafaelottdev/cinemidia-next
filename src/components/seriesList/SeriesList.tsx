@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react"
 import getSeries from "@/lib/getSeries"
+import type { PopularMovies } from "@/types/popularMovies"
 import type { Series } from "@/types/series"
 import CatalogCard from "../CatalogCard/CatalogCard"
 import CatalogLoading from "../loadings/CatalogLoading/CatalogLoading"
@@ -12,23 +13,35 @@ function SeriesList() {
   const [loading, setLoading] = useState<boolean>(true)
 
   useEffect(() => {
-    try {
-      async function getSeriesList() {
-        const seriesList = await getSeries(currentPage)
-        setSeries((previousSeries) => [...previousSeries, ...seriesList])
-      }
+    async function getSeriesList() {
+      try {
+        setLoading(true)
 
-      getSeriesList()
-    } catch (error) {
-      console.log(error)
-    } finally {
-      setLoading(false)
+        const seriesList = await getSeries(currentPage)
+
+        setSeries((previousSeries) => {
+          const newSeries = seriesList.filter(
+            (series: PopularMovies) =>
+              !previousSeries.some(
+                (previousSeries) => previousSeries.id === series.id,
+              ),
+          )
+
+          return [...previousSeries, ...newSeries]
+        })
+      } catch (error) {
+        console.log(error)
+      } finally {
+        setLoading(false)
+      }
     }
+
+    getSeriesList()
   }, [currentPage])
 
   useEffect(() => {
     const intersectionObserver = new IntersectionObserver((entries) => {
-      if (entries.some((entry) => entry.isIntersecting)) {
+      if (entries.some((entry) => entry.isIntersecting) && !loading) {
         setCurrentPage((currentPageInsideState) => currentPageInsideState + 1)
       }
     })
@@ -38,23 +51,19 @@ function SeriesList() {
     if (sentinel) intersectionObserver.observe(sentinel)
 
     return () => intersectionObserver.disconnect()
-  }, [])
+  }, [loading])
 
-  if (loading) {
-    return <CatalogLoading />
-  } else {
-    return (
-      <ul className="catalog_list">
-        {series.map((serie) => {
-          const randomKey = crypto.randomUUID()
+  return (
+    <ul className="catalog_list">
+      {series.map((serie) => (
+        <CatalogCard key={serie.id} catalog={serie} />
+      ))}
 
-          return <CatalogCard key={randomKey} catalog={serie} />
-        })}
+      {loading && <CatalogLoading />}
 
-        <li id="sentinel"></li>
-      </ul>
-    )
-  }
+      <li id="sentinel"></li>
+    </ul>
+  )
 }
 
 export default SeriesList
