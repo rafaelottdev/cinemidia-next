@@ -21,7 +21,6 @@ function ReleaseCard({ movie, currentGenres }: MovieList) {
             alt="poster do filme"
             width={500}
             height={500}
-            quality={100}
           />
         </div>
 
