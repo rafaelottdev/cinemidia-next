@@ -37,7 +37,6 @@ function SliderBackground({
                 className={styles.movie_img}
                 width={1000}
                 height={1000}
-                quality={100}
               />
 
               <div className={styles.movie_info_container}>

@@ -1,18 +1,38 @@
+"use client"
+
 import Image from "next/image"
 import Link from "next/link"
 import { FaRegBookmark } from "react-icons/fa"
 import { IoAddOutline } from "react-icons/io5"
 import tmdbData from "@/config/tmdb"
+import { addMovieWatchlist } from "@/lib/addMovieWatchlist"
 import formatDate from "@/lib/formatDate"
+import { removeMovieWatchlist } from "@/lib/removeMovieWatchlist"
 import type { PopularMovies } from "@/types/popularMovies"
 import type { Series } from "@/types/series"
 import styles from "./CatalogCard.module.sass"
 
 interface Catalog {
   catalog: PopularMovies | Series
+  handleRemove?: (currentId: number) => void
 }
 
-function Card({ catalog }: Catalog) {
+function Card({ catalog, handleRemove }: Catalog) {
+  const watchlistStorage = JSON.parse(localStorage.getItem("watchlist") || "[]")
+
+  function toggleWatchlist(currentCatalog: PopularMovies | Series) {
+    const exists = watchlistStorage.some(
+      (currentMovie: PopularMovies) => currentMovie.id === currentCatalog.id,
+    )
+
+    if (exists) {
+      removeMovieWatchlist(currentCatalog)
+      handleRemove?.(currentCatalog.id)
+    } else {
+      addMovieWatchlist(currentCatalog)
+    }
+  }
+
   return (
     <li>
       <Link href="/" className={styles.movie_container}>
@@ -24,7 +44,15 @@ function Card({ catalog }: Catalog) {
             height={270}
           />
 
-          <button type="button" className={styles.add_watchlist_btn}>
+          <button
+            type="button"
+            className={styles.add_watchlist_btn}
+            onClick={(event) => {
+              event.preventDefault()
+              event.stopPropagation()
+              toggleWatchlist(catalog)
+            }}
+          >
             <div>
               <span className={styles.icon_wrapp}>
                 <IoAddOutline />

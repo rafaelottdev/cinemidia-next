@@ -34,7 +34,6 @@ function SliderCover({
                 className={styles.poster_img}
                 width={215}
                 height={280}
-                quality={100}
               />
             </li>
           )

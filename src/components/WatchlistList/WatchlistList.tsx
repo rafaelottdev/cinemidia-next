@@ -1,0 +1,42 @@
+"use client"
+
+import { useEffect, useState } from "react"
+import type { PopularMovies } from "@/types/popularMovies"
+import type { Series } from "@/types/series"
+import CatalogCard from "../CatalogCard/CatalogCard"
+
+function WatchlistList() {
+  const [watchlist, setWatchlist] = useState<(PopularMovies | Series)[]>([])
+
+  useEffect(() => {
+    const watchlistStorage = JSON.parse(
+      localStorage.getItem("watchlist") || "[]",
+    )
+
+    setWatchlist(watchlistStorage)
+  }, [])
+
+  function handleRemove(currentId: number) {
+    setWatchlist((current: (PopularMovies | Series)[]) => {
+      return current.filter(
+        (currentCatalog: PopularMovies | Series) =>
+          currentCatalog.id !== currentId,
+      )
+    })
+  }
+
+  return (
+    <ul className="catalog_list">
+      {watchlist.map((current: PopularMovies | Series) => (
+        <CatalogCard
+          key={current.id}
+          catalog={current}
+          handleRemove={handleRemove}
+        />
+      ))}
+    </ul>
+  )
+}
+
+export default WatchlistList
+// deixar o botão dos filmes e series com menos ou ultimo estado de animação, depois fazer o mesmo com o header
