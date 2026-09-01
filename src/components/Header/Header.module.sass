@@ -40,54 +40,73 @@
 
     z-index: 1
 
-.nav_item
-    a
-        width: 90px
-        height: 30px
+.base_page_link_btn
+    width: 90px
+    height: 30px
+
+    @include flex-center
+
+    position: relative
+    overflow: hidden
+
+    font-size: $primary-font-size
+    font-family: $primary-font
+    letter-spacing: $primary-letter-spacing
+
+    border-radius: $primary-border-radius
+    color: $primary-color
+    
+    span
+        height: 100%
 
         @include flex-center
+        position: absolute
+        right: 0
 
-        position: relative
         overflow: hidden
+        transition: .3s
 
-        font-size: $primary-font-size
-        font-family: $primary-font
-        letter-spacing: $primary-letter-spacing
+        &:first-child
+            width: 100%
+            z-index: 1
+            border-radius: 5px
 
-        border-radius: $primary-border-radius
-        color: $primary-color
+        &:last-child
+            width: 0%
+            z-index: 0
 
-        &:hover
-            transform: scale(1.1)
+            svg
+                font-size: 18px
 
-            span
-                &:first-child
-                    width: 0%
-                    z-index:0
-
-                &:last-child
-                    width: 100%
-                    z-index:1
-                    background-color: $header-bg
+.page_link_btn
+    &:hover
+        transform: scale(1.1)
 
         span
-            height: 100%
-
-            @include flex-center
-            position: absolute
-            right: 0
-
-            overflow: hidden
-            transition: .3s
-
             &:first-child
-                width: 100%
-                z-index: 1
-                border-radius: 5px
+                width: 0%
+                z-index:0
 
             &:last-child
-                width: 0%
-                z-index: 0
+                width: 100%
+                z-index:1
+                background-color: $header-bg
 
-                svg
-                    font-size: 18px
+// Estilo Interativo
+
+.selected
+    transform: scale(1.1)
+
+    span
+        &:first-child
+            width: 0%
+            z-index: 0
+
+        &:last-child
+            width: 100%
+            z-index: 1
+            border-radius: 5px
+            background-color: $header-bg
+
+            svg
+                font-size: 18px
