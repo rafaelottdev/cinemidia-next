@@ -39,4 +39,5 @@ function WatchlistList() {
 }
 
 export default WatchlistList
-// deixar o botão dos filmes e series com menos ou ultimo estado de animação, depois fazer o mesmo com o header
+
+// depois fazer o mesmo com o header  -> depois fazer as recomendações no watchlist -> depois a pagina para os filmes e depois versão mobile

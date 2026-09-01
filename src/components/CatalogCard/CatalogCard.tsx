@@ -2,7 +2,9 @@
 
 import Image from "next/image"
 import Link from "next/link"
+import { useEffect, useState } from "react"
 import { FaRegBookmark } from "react-icons/fa"
+import { FiMinus } from "react-icons/fi"
 import { IoAddOutline } from "react-icons/io5"
 import tmdbData from "@/config/tmdb"
 import { addMovieWatchlist } from "@/lib/addMovieWatchlist"
@@ -18,18 +20,27 @@ interface Catalog {
 }
 
 function Card({ catalog, handleRemove }: Catalog) {
-  const watchlistStorage = JSON.parse(localStorage.getItem("watchlist") || "[]")
+  const [watchlist, setWatchlist] = useState<boolean>(false)
 
-  function toggleWatchlist(currentCatalog: PopularMovies | Series) {
+  useEffect(() => {
+    const watchlistStorage = JSON.parse(
+      localStorage.getItem("watchlist") || "[]",
+    )
     const exists = watchlistStorage.some(
-      (currentMovie: PopularMovies) => currentMovie.id === currentCatalog.id,
+      (current: PopularMovies | Series) => current.id === catalog.id,
     )
 
-    if (exists) {
+    setWatchlist(exists)
+  }, [catalog.id])
+
+  function toggleWatchlist(currentCatalog: PopularMovies | Series) {
+    if (watchlist) {
       removeMovieWatchlist(currentCatalog)
       handleRemove?.(currentCatalog.id)
+      setWatchlist(false)
     } else {
       addMovieWatchlist(currentCatalog)
+      setWatchlist(true)
     }
   }
 
@@ -46,7 +57,7 @@ function Card({ catalog, handleRemove }: Catalog) {
 
           <button
             type="button"
-            className={styles.add_watchlist_btn}
+            className={`${styles.base_watchlist_btn} ${watchlist ? styles.remove_watchlist_btn : styles.add_watchlist_btn}`}
             onClick={(event) => {
               event.preventDefault()
               event.stopPropagation()
@@ -54,11 +65,15 @@ function Card({ catalog, handleRemove }: Catalog) {
             }}
           >
             <div>
-              <span className={styles.icon_wrapp}>
-                <IoAddOutline />
+              <span
+                className={`${styles.base_icon_wrapp} ${watchlist ? styles.selected : styles.icon_wrapp}`}
+              >
+                {watchlist ? <FiMinus /> : <IoAddOutline />}
               </span>
 
-              <span className={styles.icon_wrapp}>
+              <span
+                className={`${styles.base_icon_wrapp} ${watchlist ? styles.selected : styles.icon_wrapp}`}
+              >
                 <FaRegBookmark />
               </span>
             </div>
