@@ -1,6 +1,7 @@
 "use client"
 
 import Link from "next/link"
+import { usePathname } from "next/navigation"
 import { useCallback, useEffect, useState } from "react"
 import { FaRegBookmark } from "react-icons/fa"
 import { ImFire } from "react-icons/im"
@@ -10,6 +11,7 @@ import styles from "./Header.module.sass"
 
 function Header() {
   const [scrolled, setScrolled] = useState(false)
+  const pathName = usePathname()
 
   const handleScroll = useCallback(() => {
     setScrolled(window.scrollY > 0)
@@ -19,6 +21,7 @@ function Header() {
     if (window.scrollY > 0) {
       setScrolled(true)
     }
+
     window.addEventListener("scroll", handleScroll)
 
     return () => window.removeEventListener("scroll", handleScroll)
@@ -29,7 +32,13 @@ function Header() {
       <nav className={styles.nav}>
         <ul className={styles.nav_list}>
           <li className={styles.nav_item}>
-            <Link href="/movies">
+            <Link
+              href="/movies"
+              className={`
+                ${styles.base_page_link_btn}
+                ${pathName === "/movies" ? styles.selected : styles.page_link_btn}
+              `}
+            >
               <span>Filmes</span>
 
               <span>
@@ -39,7 +48,13 @@ function Header() {
           </li>
 
           <li className={styles.nav_item}>
-            <Link href="/series">
+            <Link
+              href="/series"
+              className={`
+                ${styles.base_page_link_btn}
+                ${pathName === "/series" ? styles.selected : styles.page_link_btn}
+              `}
+            >
               <span>Séries</span>
 
               <span>
@@ -51,7 +66,13 @@ function Header() {
           <LogoItem />
 
           <li className={styles.nav_item}>
-            <Link href="/popular">
+            <Link
+              href="/popular"
+              className={`
+                ${styles.base_page_link_btn}
+                ${pathName === "/popular" ? styles.selected : styles.page_link_btn}
+              `}
+            >
               <span>Populares</span>
 
               <span>
@@ -61,7 +82,13 @@ function Header() {
           </li>
 
           <li className={styles.nav_item}>
-            <Link href="/watchlist">
+            <Link
+              href="/watchlist"
+              className={`
+                ${styles.base_page_link_btn}
+                ${pathName === "/watchlist" ? styles.selected : styles.page_link_btn}
+              `}
+            >
               <span>Watchlist</span>
 
               <span>
