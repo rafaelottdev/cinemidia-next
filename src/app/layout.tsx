@@ -5,6 +5,7 @@ import Header from "@/components/Header/Header"
 
 import "../styles/globals.sass"
 import "../styles/pages/catalog.sass"
+import "../styles/pages/mediaPage.sass"
 import "../styles/components/catalogList.sass"
 
 export const metadata: Metadata = {

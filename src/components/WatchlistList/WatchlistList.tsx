@@ -40,4 +40,4 @@ function WatchlistList() {
 
 export default WatchlistList
 
-//  depois fazer as recomendações no watchlist -> depois a pagina para os filmes e depois versão mobile
+//  depois a pagina para os filmes e depois versão mobile

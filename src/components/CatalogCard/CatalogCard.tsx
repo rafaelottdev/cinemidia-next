@@ -19,7 +19,7 @@ interface Catalog {
   handleRemove?: (currentId: number) => void
 }
 
-function Card({ catalog, handleRemove }: Catalog) {
+function CatalogCard({ catalog, handleRemove }: Catalog) {
   const [watchlist, setWatchlist] = useState<boolean>(false)
 
   useEffect(() => {
@@ -96,4 +96,4 @@ function Card({ catalog, handleRemove }: Catalog) {
   )
 }
 
-export default Card
+export default CatalogCard
