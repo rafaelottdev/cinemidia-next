@@ -5,6 +5,7 @@ import Link from "next/link"
 import { useState } from "react"
 import { TbShare3 } from "react-icons/tb"
 import tmdbData from "@/config/tmdb"
+import formatTitle from "@/lib/formatTitle"
 import { leftClick } from "@/lib/leftClick"
 import { rightClick } from "@/lib/rightClick"
 import type { Genres } from "@/types/genres"
@@ -76,7 +77,10 @@ function PopularSlider({ selectedPopularMovies, genresList }: TmdbData) {
                   height={100}
                 />
 
-                <Link href="/" className={styles.see_more_link}>
+                <Link
+                  href={`movies/${formatTitle(movie.title)}/${movie.id}`}
+                  className={styles.see_more_link}
+                >
                   <span>Ver Mais</span>
 
                   <span>
