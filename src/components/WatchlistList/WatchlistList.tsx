@@ -34,6 +34,7 @@ function WatchlistList() {
           handleRemove={handleRemove}
         />
       ))}
+      Adicione filmes para assistir mais tarde - ir para Filmes ou Séries
     </ul>
   )
 }

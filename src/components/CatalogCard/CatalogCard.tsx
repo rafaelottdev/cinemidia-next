@@ -9,6 +9,7 @@ import { IoAddOutline } from "react-icons/io5"
 import tmdbData from "@/config/tmdb"
 import { addMovieWatchlist } from "@/lib/addMovieWatchlist"
 import formatDate from "@/lib/formatDate"
+import formatTitle from "@/lib/formatTitle"
 import { removeMovieWatchlist } from "@/lib/removeMovieWatchlist"
 import type { PopularMovies } from "@/types/popularMovies"
 import type { Series } from "@/types/series"
@@ -46,7 +47,12 @@ function CatalogCard({ catalog, handleRemove }: Catalog) {
 
   return (
     <li>
-      <Link href="/" className={styles.movie_container}>
+      <Link
+        href={`
+          ${"title" in catalog ? `movies/${formatTitle(catalog.title)}/${catalog.id}` : `series/${formatTitle(catalog.name)}/${catalog.id}`}/
+        `}
+        className={styles.movie_container}
+      >
         <div className={styles.movie_img_wrapp}>
           <Image
             src={`${tmdbData.TMBD_IMG_URL_300}${catalog.poster_path}`}

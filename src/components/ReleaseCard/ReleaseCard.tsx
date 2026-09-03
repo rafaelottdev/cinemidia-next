@@ -2,6 +2,7 @@ import Image from "next/image"
 import Link from "next/link"
 import tmdbData from "@/config/tmdb"
 import formatDate from "@/lib/formatDate"
+import formatTitle from "@/lib/formatTitle"
 import type { Genres } from "@/types/genres"
 import type { PopularMovies } from "@/types/popularMovies"
 import styles from "./ReleaseCard.module.sass"
@@ -14,7 +15,10 @@ interface MovieList {
 function ReleaseCard({ movie, currentGenres }: MovieList) {
   return (
     <li className={styles.movie_card}>
-      <Link href="/" className={styles.movie_link}>
+      <Link
+        href={`movies/${formatTitle(movie.title)}/${movie.id}`}
+        className={styles.movie_link}
+      >
         <div className={styles.img_wrapp}>
           <Image
             src={`${tmdbData.TMBD_IMG_URL_300}${movie.poster_path}`}
