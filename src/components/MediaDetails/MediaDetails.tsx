@@ -30,60 +30,60 @@ function MediaDetails({ movie, trailerKey, castList }: Prop) {
   })
 
   return movie.map((details: Details) => {
+    const selectedGenres = details.genres.slice(0, 3)
+
     return (
       <div key={details.id} className={styles.details_container}>
-        <div>
-          <div>
+        <div className={styles.left_container}>
+          <div className={styles.info_top}>
             <Image
               src={`${tmdbData.TMDB_IMG_URL}/w1280${details.poster_path}`}
               alt="filme"
               width={200}
               height={260}
-              style={{ borderRadius: "10px" }}
+              className={styles.movie_poster}
             />
 
-            <div>
-              <h3>{details.title}</h3>
+            <div className={styles.movie_info_top}>
+              <h3 className={styles.movie_title}>{details.title}</h3>
 
-              <ul>
-                <li>
+              <ul className={styles.movie_info_list}>
+                <li className={styles.movie_info_item}>
                   <svg viewBox="0 0 20 19">
                     <title>icone de estrela</title>
                     <path d="M3.825 19L5.45 11.975L0 7.25L7.2 6.625L10 0L12.8 6.625L20 7.25L14.55 11.975L16.175 19L10 15.275L3.825 19Z" />
                   </svg>
 
-                  <p>{details.vote_average}</p>
+                  <p>{details.vote_average.toFixed(1) ?? "0.0"}</p>
                 </li>
 
-                <li>
+                <li className={styles.movie_info_item}>
                   <IoMdTime />
 
                   <p>{formatTime(details.runtime)}</p>
                 </li>
 
-                <li>
+                <li className={styles.movie_info_item}>
                   <FaRegCalendarAlt />
 
                   <p>{formatDate(details.release_date, true)}</p>
                 </li>
               </ul>
 
-              <ul>
-                {details.genres.map((genre: Genres) => (
+              <ul className={styles.movie_genres_list}>
+                {selectedGenres.map((genre: Genres) => (
                   <li key={genre.id}>{genre.name}</li>
                 ))}
               </ul>
             </div>
           </div>
 
-          <div>
-            <div>
-              <h4>Sinopse</h4>
-
+          <div className={styles.info_bottom}>
+            <div className={styles.synopsis_container}>
               <p>{details.overview}</p>
             </div>
 
-            <ul>
+            <ul className={styles.movie_data_list}>
               <li>
                 <h4>Orçamento</h4>
 
@@ -96,33 +96,34 @@ function MediaDetails({ movie, trailerKey, castList }: Prop) {
                 <p>{formatMoney.format(details.revenue)}</p>
               </li>
 
-              <p>
-                <h4>Produzido por</h4>
+              <li>
+                <h4>Pais de Origem</h4>
 
-                {details.production_companies.map(
-                  ({ id, name }: { id: number; name: string }) => (
-                    <p key={id}>{name}</p>
-                  ),
-                )}
-              </p>
+                <p>{details.origin_country}</p>
+              </li>
+
+              <li>
+                <h4>Nome Original</h4>
+
+                <p>{details.original_title}</p>
+              </li>
             </ul>
           </div>
         </div>
 
-        <div>
-          <div>
-            <ul>
+        <div className={styles.right_container}>
+          <div className={styles.cast_container}>
+            <ul className={styles.cast_list}>
               {castList.map((cast: Cast) => (
                 <CastCard key={cast.id} cast={cast} />
               ))}
             </ul>
           </div>
 
-          <div>
+          <div className={styles.trailer_container}>
             <iframe
               src={`https://www.youtube.com/embed/${trailerKey}`}
               title="Trailer de um filme"
-              style={{ width: "530px", height: "280px" }}
             ></iframe>
           </div>
         </div>
