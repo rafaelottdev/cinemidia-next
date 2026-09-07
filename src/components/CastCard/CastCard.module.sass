@@ -24,12 +24,20 @@
   flex-direction: column
   gap: 5px
 
-  p
-    font-family: $movie-data-font
-    font-size: 13px
+  span
+    max-width: 165px
+    display: block
+    overflow: hidden
+
+    p
+      font-family: $movie-data-font
+      font-size: 13px
+      white-space: pre
 
     &:first-child
-      color: #ffffff82
-
+      &:first-child
+        color: #ffffff82
+        
     &:last-child
-      color: #fffffff0
+      &:last-child
+        color: #fffffff0

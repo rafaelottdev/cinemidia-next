@@ -40,5 +40,4 @@ function WatchlistList() {
 }
 
 export default WatchlistList
-
-//  depois a pagina para os filmes e depois versão mobile
+// adicionar pesquisa no filmes, series e watchlist -> versão mobile
