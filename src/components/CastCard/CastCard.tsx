@@ -17,16 +17,20 @@ function CastCard({ cast }: Prop) {
       <div className={styles.cast_img_wrapp}>
         <Image
           src={url}
-          alt={`Foto do(a) ${cast.original_name}`}
+          alt={`Foto ${cast.original_name}`}
           width={50}
           height={50}
         />
       </div>
 
       <div className={styles.cast_name_wrapp}>
-        <p>{cast.original_name}</p>
+        <span>
+          <p>{cast.original_name}</p>
+        </span>
 
-        <p>{cast.character}</p>
+        <span>
+          <p>{cast.character}</p>
+        </span>
       </div>
     </li>
   )

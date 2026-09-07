@@ -4,7 +4,7 @@ import styles from "./Trailer.module.sass"
 
 async function Trailer() {
   const upComingMovie = await getUpComingMovies()
-  const trailer = await getTrailer(upComingMovie[0].id)
+  const trailer = await getTrailer("movie", upComingMovie[0].id)
   const trailerKey: string = trailer.key
 
   return (

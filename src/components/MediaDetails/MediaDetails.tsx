@@ -1,33 +1,23 @@
 import Image from "next/image"
-import { FaRegCalendarAlt } from "react-icons/fa"
+import { FaCircle, FaRegCalendarAlt } from "react-icons/fa"
 import { FaYoutube } from "react-icons/fa6"
 import { IoMdTime } from "react-icons/io"
 import tmdbData from "@/config/tmdb"
 import formatDate from "@/lib/formatDate"
-import getCredits from "@/lib/getCredits"
-import getMoviesDetails from "@/lib/getMoviesDetails"
-import getTrailer from "@/lib/getTrailer"
 import type { Cast } from "@/types/cast"
-import type { Details } from "@/types/details"
 import type { Genres } from "@/types/genres"
+import type { MovieDetails } from "@/types/movieDetails"
+import type { SeriesDetails } from "@/types/seriesDetails"
 import CastCard from "../CastCard/CastCard"
 import styles from "./MediaDetails.module.sass"
 
-const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))
-
 interface Prop {
-  id: number
+  media: MovieDetails[] | SeriesDetails[]
+  trailerKey: string
+  castList: Cast[]
 }
 
-async function MediaDetails({ id }: Prop) {
-  const movie = await getMoviesDetails(id)
-  const movieTrailer = await getTrailer(id)
-  const trailerKey = movieTrailer === undefined ? "" : movieTrailer.key
-  const castData = await getCredits("movie", id)
-  const castList = castData.slice(0, 4)
-
-  await delay(5000)
-
+async function MediaDetails({ media, trailerKey, castList }: Prop) {
   const formatTime = (totalMinutes: number) => {
     const hours: number = Math.floor(totalMinutes / 60)
     const minutes: number = totalMinutes % 60
@@ -41,7 +31,7 @@ async function MediaDetails({ id }: Prop) {
     notation: "compact",
   })
 
-  return movie.map((details: Details) => {
+  return media.map((details: MovieDetails | SeriesDetails) => {
     const selectedGenres = details.genres.slice(0, 3)
 
     return (
@@ -50,14 +40,16 @@ async function MediaDetails({ id }: Prop) {
           <div className={styles.info_top}>
             <Image
               src={`${tmdbData.TMDB_IMG_URL}/w1280${details.poster_path}`}
-              alt={`Capa do filme ${details.title}`}
+              alt={`Capa ${"title" in details ? `do filme ${details.title}` : `da série ${details.name}`}`}
               width={200}
               height={260}
               className={styles.movie_poster}
             />
 
             <div className={styles.movie_info_top}>
-              <h3 className={styles.movie_title}>{details.title}</h3>
+              <h3 className={styles.movie_title}>
+                {"title" in details ? details.title : details.name}
+              </h3>
 
               <ul className={styles.movie_info_list}>
                 <li className={styles.movie_info_item}>
@@ -70,15 +62,35 @@ async function MediaDetails({ id }: Prop) {
                 </li>
 
                 <li className={styles.movie_info_item}>
-                  <IoMdTime />
+                  {"runtime" in details ? (
+                    <IoMdTime />
+                  ) : details.episode_run_time.length > 0 ? (
+                    <IoMdTime />
+                  ) : (
+                    <FaCircle
+                      className={`${details.in_production ? styles.active : styles.finished}`}
+                    />
+                  )}
 
-                  <p>{formatTime(details.runtime)}</p>
+                  <p>
+                    {"runtime" in details
+                      ? formatTime(details.runtime)
+                      : details.episode_run_time.length > 0
+                        ? formatTime(details.episode_run_time[0])
+                        : details.in_production
+                          ? "Ativo"
+                          : "Finalizado"}
+                  </p>
                 </li>
 
                 <li className={styles.movie_info_item}>
                   <FaRegCalendarAlt />
 
-                  <p>{formatDate(details.release_date, true)}</p>
+                  <p>
+                    {"release_date" in details
+                      ? formatDate(details.release_date, true)
+                      : formatDate(details.first_air_date, true)}
+                  </p>
                 </li>
               </ul>
 
@@ -97,22 +109,26 @@ async function MediaDetails({ id }: Prop) {
 
             <ul className={styles.movie_data_list}>
               <li>
-                <h4>Orçamento</h4>
+                <h4>{"budget" in details ? "Orçamento" : "Temporadas"}</h4>
 
                 <p>
-                  {details.budget === 0
-                    ? "Sem Info"
-                    : formatMoney.format(details.budget)}
+                  {"budget" in details
+                    ? details.budget === 0
+                      ? "Sem Info"
+                      : formatMoney.format(details.budget)
+                    : details.number_of_seasons}
                 </p>
               </li>
 
               <li>
-                <h4>Bilheteria</h4>
+                <h4>{"revenue" in details ? "Bilheteria" : "Disponivel"}</h4>
 
                 <p>
-                  {details.revenue === 0
-                    ? "Sem Info"
-                    : formatMoney.format(details.revenue)}
+                  {"revenue" in details
+                    ? details.revenue === 0
+                      ? "Sem Info"
+                      : formatMoney.format(details.revenue)
+                    : details.networks[0].name}
                 </p>
               </li>
 
@@ -125,7 +141,11 @@ async function MediaDetails({ id }: Prop) {
               <li>
                 <h4>Nome Original</h4>
 
-                <p>{details.original_title}</p>
+                <p>
+                  {"original_title" in details
+                    ? details.original_title
+                    : details.original_name}
+                </p>
               </li>
             </ul>
           </div>
@@ -144,7 +164,7 @@ async function MediaDetails({ id }: Prop) {
             {trailerKey ? (
               <iframe
                 src={`https://www.youtube.com/embed/${trailerKey}`}
-                title={`Trailer do filme ${details.title}`}
+                title={`Trailer do filme ${"title" in details ? details.title : details.name}`}
               ></iframe>
             ) : (
               <div className={styles.trailerMissing}>
