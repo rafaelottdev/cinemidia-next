@@ -8,12 +8,16 @@ interface Prop {
 }
 
 function CastCard({ cast }: Prop) {
+  const url = cast.profile_path
+    ? `${tmdbData.TMDB_IMG_URL}/w45/${cast.profile_path}`
+    : "/perfil.jpg"
+
   return (
     <li className={styles.cast_item}>
       <div className={styles.cast_img_wrapp}>
         <Image
-          src={`${tmdbData.TMDB_IMG_URL}/w45/${cast.profile_path}`}
-          alt="filme"
+          src={url}
+          alt={`Foto do(a) ${cast.original_name}`}
           width={50}
           height={50}
         />
@@ -29,7 +33,3 @@ function CastCard({ cast }: Prop) {
 }
 
 export default CastCard
-
-// depois arrumar o sass, depois fazer um loading, depois arrumar o watchlist depois versão mobile
-// se não tiver o trailer, se não tive a foto de perfil, se o orçamento ou bilheteria forem zero (não tiver info)
-// colocar algum botão em baixo de generos? botão de like e deslike com #ffffff3e (do lado do thumbsup e down colocar o numero) ou do lado de generos?

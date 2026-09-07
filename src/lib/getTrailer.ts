@@ -4,7 +4,7 @@ import type { Trailers } from "@/types/trailers"
 export default async function getTrailer(movieId: number) {
   const response = await fetch(
     `${tmdbData.BASE_URL}/movie/${movieId}/videos?api_key=${tmdbData.API_KEY}&language=pt-BR&page=1`,
-    { next: { revalidate: 3600 } },
+    { next: { revalidate: 86400 } },
   )
 
   const data = await response.json()

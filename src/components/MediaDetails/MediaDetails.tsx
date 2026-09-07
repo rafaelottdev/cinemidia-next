@@ -1,21 +1,33 @@
 import Image from "next/image"
 import { FaRegCalendarAlt } from "react-icons/fa"
+import { FaYoutube } from "react-icons/fa6"
 import { IoMdTime } from "react-icons/io"
 import tmdbData from "@/config/tmdb"
 import formatDate from "@/lib/formatDate"
+import getCredits from "@/lib/getCredits"
+import getMoviesDetails from "@/lib/getMoviesDetails"
+import getTrailer from "@/lib/getTrailer"
 import type { Cast } from "@/types/cast"
 import type { Details } from "@/types/details"
 import type { Genres } from "@/types/genres"
 import CastCard from "../CastCard/CastCard"
 import styles from "./MediaDetails.module.sass"
 
+const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))
+
 interface Prop {
-  movie: Details[]
-  trailerKey: string
-  castList: Cast[]
+  id: number
 }
 
-function MediaDetails({ movie, trailerKey, castList }: Prop) {
+async function MediaDetails({ id }: Prop) {
+  const movie = await getMoviesDetails(id)
+  const movieTrailer = await getTrailer(id)
+  const trailerKey = movieTrailer === undefined ? "" : movieTrailer.key
+  const castData = await getCredits("movie", id)
+  const castList = castData.slice(0, 4)
+
+  await delay(5000)
+
   const formatTime = (totalMinutes: number) => {
     const hours: number = Math.floor(totalMinutes / 60)
     const minutes: number = totalMinutes % 60
@@ -38,7 +50,7 @@ function MediaDetails({ movie, trailerKey, castList }: Prop) {
           <div className={styles.info_top}>
             <Image
               src={`${tmdbData.TMDB_IMG_URL}/w1280${details.poster_path}`}
-              alt="filme"
+              alt={`Capa do filme ${details.title}`}
               width={200}
               height={260}
               className={styles.movie_poster}
@@ -87,13 +99,21 @@ function MediaDetails({ movie, trailerKey, castList }: Prop) {
               <li>
                 <h4>Orçamento</h4>
 
-                <p>{formatMoney.format(details.budget)}</p>
+                <p>
+                  {details.budget === 0
+                    ? "Sem Info"
+                    : formatMoney.format(details.budget)}
+                </p>
               </li>
 
               <li>
                 <h4>Bilheteria</h4>
 
-                <p>{formatMoney.format(details.revenue)}</p>
+                <p>
+                  {details.revenue === 0
+                    ? "Sem Info"
+                    : formatMoney.format(details.revenue)}
+                </p>
               </li>
 
               <li>
@@ -121,10 +141,16 @@ function MediaDetails({ movie, trailerKey, castList }: Prop) {
           </div>
 
           <div className={styles.trailer_container}>
-            <iframe
-              src={`https://www.youtube.com/embed/${trailerKey}`}
-              title="Trailer de um filme"
-            ></iframe>
+            {trailerKey ? (
+              <iframe
+                src={`https://www.youtube.com/embed/${trailerKey}`}
+                title={`Trailer do filme ${details.title}`}
+              ></iframe>
+            ) : (
+              <div className={styles.trailerMissing}>
+                <FaYoutube />
+              </div>
+            )}
           </div>
         </div>
       </div>

@@ -1,0 +1,218 @@
+.loading
+  padding: 50px
+
+  display: flex
+  flex-wrap: wrap
+  justify-content: space-between
+  background: #0F0F0F
+
+.left_container_loading
+  display: flex
+  flex-wrap: wrap
+  flex-direction: column
+  gap: 30px
+
+.top_wrapp_loading
+  display: flex
+  gap: 20px
+
+.poster_loading
+  width: 200px
+  height: 260px
+  position: relative
+  border-radius: 10px
+  background-color: #040404
+
+  &::after
+    width: 0%
+    height: 100%
+
+    content: ""
+    position: absolute
+    inset: 0
+
+    transform-origin: left
+
+    background: #ffffff03
+    animation: loading 1s linear infinite
+
+.movie_data_loading
+
+.title_loading
+  width: 350px
+  height: 35px
+  position: relative
+  margin-bottom: 20px
+  background-color: #040404
+
+  &::after
+    width: 0%
+    height: 100%
+
+    content: ""
+    position: absolute
+    inset: 0
+
+    transform-origin: left
+
+    background: #ffffff03
+    animation: loading 1s linear infinite
+
+.info_list_loading
+  margin-bottom: 30px
+  display: flex
+  gap: 20px
+
+  div
+    width: 80px
+    height: 20px
+    position: relative
+    background-color: #040404
+
+    &::after
+      width: 0%
+      height: 100%
+
+      content: ""
+      position: absolute
+      inset: 0
+
+      transform-origin: left
+
+      background: #ffffff03
+      animation: loading 1s linear infinite
+
+.genres_loading
+  display: flex
+  gap: 10px
+
+  div
+    width: 90px
+    height: 20px
+    position: relative
+    background-color: #040404
+
+    &::after
+      width: 0%
+      height: 100%
+
+      content: ""
+      position: absolute
+      inset: 0
+
+      transform-origin: left
+
+      background: #ffffff03
+      animation: loading 1s linear infinite
+
+.bottom_wrapp_loading
+  display: flex
+  flex-direction: column
+  align-items: center
+
+.synopsis_loading
+  width: 700px
+  height: 130px
+  margin-bottom: 25px
+  position: relative
+  border-radius: 5px
+  background-color: #040404
+
+  &::after
+    width: 0%
+    height: 100%
+
+    content: ""
+    position: absolute
+    inset: 0
+
+    transform-origin: left
+
+    background: #ffffff03
+    animation: loading 1s linear infinite
+
+.movie_info_loading
+  display: flex
+  gap: 20px
+
+  div
+    width: 130px
+    height: 40px
+    position: relative
+    border-radius: 5px
+    background-color: #040404
+
+    &::after
+      width: 0%
+      height: 100%
+
+      content: ""
+      position: absolute
+      inset: 0
+
+      transform-origin: left
+
+      background: #ffffff03
+      animation: loading 1s linear infinite
+
+.right_container_loading
+  padding-top: 15px
+
+  display: flex
+  flex-direction: column
+  justify-content: space-between
+  align-items: center
+  gap: 25px
+
+.cast_loading_wrapp
+  width: 100%
+  display: grid
+  grid-template-columns: 1fr 1fr
+  gap: 10px
+
+  div
+    width: 100%
+    height: 70px
+    position: relative
+    border-radius: 10px
+    background-color: #040404
+
+    &::after
+      width: 0%
+      height: 100%
+
+      content: ""
+      position: absolute
+      inset: 0
+
+      transform-origin: left
+
+      background: #ffffff03
+      animation: loading 1s linear infinite
+
+.trailer_loading
+  width: 530px
+  height: 280px
+  position: relative
+  border-radius: 10px
+  background-color: #040404
+
+  &::after
+    width: 0%
+    height: 100%
+
+    content: ""
+    position: absolute
+    inset: 0
+
+    transform-origin: left
+
+    background: #ffffff03
+    animation: loading 1s linear infinite
+
+@keyframes loading 
+  from
+      width: 0%
+  
+  to
+      width: 100%

@@ -1,12 +1,14 @@
+@use "../../styles/abstracts/variables" as *
+@use "../../styles/abstracts/mixins" as * 
+
 .details_container
   padding: 50px
+  
   display: flex
   flex-wrap: wrap
   justify-content: space-between
 
 .left_container
-  // padding: 10px
-  // border-radius: 20px
   display: flex
   flex-wrap: wrap
   flex-direction: column
@@ -17,36 +19,39 @@
   gap: 20px
 
 .movie_poster
+  width: 200px
+  height: 260px
   border-radius: 10px
-
-.movie_info_top
+  background-color: #040404
 
 .movie_title
-  font-size: 34px
   margin-bottom: 20px
+  font-family: $secondary-font
+  font-size: 34px
+  letter-spacing: $secondary-letter-spacing
 
 .movie_info_list
+  margin-bottom: 30px
   display: flex
   gap: 20px
-  margin-bottom: 30px
 
   li
     display: flex
     align-items: center
     gap: 5px
-    letter-spacing: .5px
-
-    // background: blue
+    font-family: $movie-data-font
+    font-size: 13px
+    letter-spacing: $movie-data-letter-spacing
+    color: #fffffff0
 
     &:nth-child(2) svg
       font-size: 20px
 
     svg
-      fill: #8A00FF
       font-size: 18px
+      fill: #8A00FF
 
 .movie_info_item
-
   &:first-child svg
     width: 18px
     fill: yellow
@@ -57,11 +62,15 @@
 
   li
     padding: 3px 15px
+
+    border: 1px solid #ffffff4b
     border-radius: 15px
+
+    font-family: $movie-data-font
+    font-size: 12px
     letter-spacing: .8px
-    font-size: 14px
     text-transform: capitalize
-    border: 1px solid #ffffff84
+    color: #fffffff0
 
 .info_bottom
   display: flex
@@ -73,9 +82,12 @@
   margin-bottom: 25px
 
   p
+    font-family: $movie-data-font
+    font-size: 14px
     text-align: justify
     letter-spacing: .5px
-    line-height: 1.3em
+    line-height: 1.5em
+    color: #fffffff0
 
 .movie_data_list
   display: flex
@@ -88,27 +100,31 @@
     flex-direction: column
     align-items: center
     gap: 5px
+
     border-radius: 5px
     background-color: black
 
     h4
-      letter-spacing: .5px
-      font-size: 16px
+      font-family: $movie-data-font
+      font-size: 13px
+      letter-spacing: 1px
+      color: #fffffff0
+      
 
     p
+      font-family: $movie-data-font
+      font-size: 12px
       letter-spacing: .5px
-      font-size: 14px
+      color: #ffffffd6
 
 .right_container
   padding-top: 15px
+
   display: flex
   flex-direction: column
   justify-content: space-between
   align-items: center
   gap: 25px
-  // background: red
-  // padding: 10px
-  // border-radius: 20px
 
 .cast_container
   width: 100%
@@ -127,9 +143,23 @@
 .trailer_container
   width: 530px
   height: 280px
+
   overflow: hidden
   border-radius: 10px
+  background-color: #040404
 
   iframe
     width: 100%
     height: 100%
+
+.trailerMissing
+  width: 100%
+  height: 100%
+  
+  @include flex-center
+  
+  background-color: black
+
+  svg
+    font-size: 72px
+    fill: #302f2f
