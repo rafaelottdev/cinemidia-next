@@ -1,5 +1,6 @@
 "use client"
 
+import Link from "next/link"
 import { useEffect, useState } from "react"
 import type { PopularMovies } from "@/types/popularMovies"
 import type { Series } from "@/types/series"
@@ -27,17 +28,37 @@ function WatchlistList() {
 
   return (
     <ul className="catalog_list">
-      {watchlist.map((current: PopularMovies | Series) => (
-        <CatalogCard
-          key={current.id}
-          catalog={current}
-          handleRemove={handleRemove}
-        />
-      ))}
-      Adicione filmes para assistir mais tarde - ir para Filmes ou Séries
+      {watchlist.length > 0 ? (
+        watchlist.map((current: PopularMovies | Series) => (
+          <CatalogCard
+            key={current.id}
+            catalog={current}
+            handleRemove={handleRemove}
+          />
+        ))
+      ) : (
+        <li className="no_media_container">
+          <p className="no_media_text">
+            Adicione Filmes ou Séries para assistir mais tarde
+          </p>
+
+          <div className="no_media_btn_container">
+            <Link href="/movies" className="no_media_btn">
+              Filmes
+            </Link>
+
+            <Link href="/series" className="no_media_btn">
+              Séries
+            </Link>
+
+            <Link href="/popular" className="no_media_btn">
+              Populares
+            </Link>
+          </div>
+        </li>
+      )}
     </ul>
   )
 }
 
 export default WatchlistList
-// adicionar pesquisa no filmes, series e watchlist -> versão mobile

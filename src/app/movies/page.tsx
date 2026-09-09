@@ -1,7 +1,15 @@
 import { LuClapperboard } from "react-icons/lu"
 import MovieList from "@/components/MovieList/MovieList"
+import Search from "@/components/Search/Search"
 
-async function Movies() {
+async function Movies({
+  searchParams,
+}: {
+  searchParams?: Promise<{ query?: string; page?: string }>
+}) {
+  const params = await searchParams
+  const query = params?.query || ""
+
   return (
     <section className="catalog_page">
       <div className="catalog_title_container">
@@ -14,11 +22,15 @@ async function Movies() {
 
           <span></span>
         </div>
+
+        <Search />
       </div>
 
-      <MovieList />
+      <MovieList query={query} />
     </section>
   )
 }
 
 export default Movies
+
+// search -> fazer a pagina (s) de not-found -> mobile // estudar testes detarde !MUITO IMPORTANTE

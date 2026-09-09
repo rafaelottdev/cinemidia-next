@@ -1,5 +1,29 @@
+@use "../abstracts/variables" as *
+  
 .catalog_list
   display: flex
   justify-content: center
   flex-wrap: wrap
   gap: 35px
+
+.no_media_container
+
+.no_media_text
+  margin-bottom: 20px
+  font-family: $movie-data-font
+  font-size: 18px
+  letter-spacing: .5px
+
+.no_media_btn_container
+  display: flex
+  justify-content: center
+  gap: 20px
+
+.no_media_btn
+  font-family: $primary-font
+  font-size: 14px
+  letter-spacing: $primary-letter-spacing
+  color: white
+
+  &:hover
+    text-decoration: underline
