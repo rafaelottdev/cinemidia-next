@@ -7,6 +7,7 @@ import "../styles/globals.sass"
 import "../styles/pages/catalog.sass"
 import "../styles/pages/mediaPage.sass"
 import "../styles/components/catalogList.sass"
+import "../styles/pages/not-found.sass"
 
 export const metadata: Metadata = {
   title: "Cinemidia",
