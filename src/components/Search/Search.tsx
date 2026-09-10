@@ -1,18 +1,37 @@
 "use client"
 
 import { usePathname, useRouter, useSearchParams } from "next/navigation"
-import { useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { FaSearch } from "react-icons/fa"
 import styles from "./Search.module.sass"
 
 function Search() {
-  const [openSearch, setOpenSearch] = useState(false)
-
   const searchParams = useSearchParams()
   const pathName = usePathname()
   const { replace } = useRouter()
 
+  const inputRef = useRef<HTMLInputElement>(null)
+  const query = searchParams.get("query")
+
+  const [openSearch, setOpenSearch] = useState<boolean>(
+    !!searchParams.get("query"),
+  )
+  const [search, setSearch] = useState<string>(searchParams.get("query") ?? "")
+
+  useEffect(() => {
+    const input = inputRef.current
+
+    if (query && input) {
+      input.focus()
+
+      const size = input.value.length
+      input.setSelectionRange(size, size)
+    }
+  }, [query])
+
   function handleSearch(text: string) {
+    setSearch(text)
+
     const params = new URLSearchParams(searchParams)
 
     if (text) {
@@ -22,6 +41,21 @@ function Search() {
     }
 
     replace(`${pathName}?${params.toString()}`)
+  }
+
+  function handleClick() {
+    if (openSearch) {
+      setSearch("")
+
+      const params = new URLSearchParams(searchParams)
+      params.delete("query")
+
+      replace(`${pathName}?${params.toString()}`)
+    } else {
+      inputRef.current?.focus()
+    }
+
+    setOpenSearch(!openSearch)
   }
 
   return (
@@ -35,15 +69,17 @@ function Search() {
             type="text"
             name="search"
             id="search"
+            autoComplete="off"
+            ref={inputRef}
+            value={search}
             onChange={(txt) => handleSearch(txt.target.value)}
-            defaultValue={searchParams.get("query")?.toString()}
           />
         </div>
       </div>
 
       <button
         type="button"
-        onClick={() => setOpenSearch(!openSearch)}
+        onClick={handleClick}
         className={styles.search_button}
       >
         <FaSearch />

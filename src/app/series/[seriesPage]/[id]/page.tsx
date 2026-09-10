@@ -1,3 +1,5 @@
+import { Suspense } from "react"
+import MediaDetailsLoading from "@/components/loadings/MediaDetailsLoading/MediaDetailsLoading"
 import SeriesDetails from "@/components/SeriesDetails/SeriesDetails"
 
 async function SeriesPage({
@@ -9,7 +11,9 @@ async function SeriesPage({
 
   return (
     <section className="media_section">
-      <SeriesDetails id={id} />
+      <Suspense fallback={<MediaDetailsLoading />}>
+        <SeriesDetails id={id} />
+      </Suspense>
     </section>
   )
 }
