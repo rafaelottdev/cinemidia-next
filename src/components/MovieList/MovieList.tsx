@@ -102,6 +102,3 @@ function MovieList({ query }: { query: string }) {
 }
 
 export default MovieList
-
-// ta renderizando somente a pagina 1 da pesquisa
-// tratar o input

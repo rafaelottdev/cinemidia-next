@@ -1,7 +1,15 @@
 import { LuTv } from "react-icons/lu"
-import SeriesList from "@/components/seriesList/SeriesList"
+import Search from "@/components/Search/Search"
+import SeriesList from "@/components/SeriesList/SeriesList"
 
-async function Series() {
+async function Series({
+  searchParams,
+}: {
+  searchParams?: Promise<{ query?: string; page?: string }>
+}) {
+  const params = await searchParams
+  const query = params?.query || ""
+
   return (
     <section className="catalog_page">
       <div className="catalog_title_container">
@@ -14,9 +22,11 @@ async function Series() {
 
           <span></span>
         </div>
+
+        <Search />
       </div>
 
-      <SeriesList />
+      <SeriesList query={query} />
     </section>
   )
 }

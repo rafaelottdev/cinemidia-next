@@ -33,4 +33,4 @@ async function Movies({
 
 export default Movies
 
-// search -> fazer a pagina (s) de not-found -> mobile // estudar testes detarde !MUITO IMPORTANTE
+// fazer a pagina (s) de not-found -> mobile // estudar testes detarde !MUITO IMPORTANTE
