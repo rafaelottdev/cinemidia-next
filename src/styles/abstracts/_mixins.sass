@@ -15,3 +15,7 @@
     display: flex
     align-items: center
     justify-content: center
+
+@mixin responsive($size)
+    @media (max-width: $size)
+        @content
