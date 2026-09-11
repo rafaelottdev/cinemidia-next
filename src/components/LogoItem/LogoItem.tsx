@@ -3,10 +3,14 @@ import Link from "next/link"
 
 import styles from "./LogoItem.module.sass"
 
-function LogoItem() {
+function LogoItem({ pathName }: { pathName: string }) {
   return (
     <li>
-      <Link href="/" className={styles.logo_link}>
+      <Link
+        href="/"
+        className={`${styles.logo_link}
+        ${pathName === "/" ? styles.selected : ""}`}
+      >
         <Image
           src="/logo_v2.png"
           width={50}
