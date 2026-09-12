@@ -116,9 +116,11 @@
 
         &:last-child
             width: 0%
-            padding-left: 25px
             z-index: 0
-            justify-content: flex-start
+
+            @include responsive(map-get($breakpoints, "lg"))
+                padding-left: 25px
+                justify-content: flex-start
 
             svg
                 font-size: 18px
