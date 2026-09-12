@@ -1,6 +1,7 @@
 @use "../../styles/abstracts/variables" as *
 @use "../../styles/abstracts/mixins" as *
 @use "../../styles/abstracts/breakpoints" as *
+@use "sass:map"
 
 .background_fixed
     width: 100vw
@@ -33,7 +34,7 @@
 
     color: $primary-color
 
-    @include responsive(map-get($breakpoints, "lg"))
+    @include responsive(map.get($breakpoints, "lg"))
         top: 150px
 
 .movie_title
@@ -43,7 +44,7 @@
     font-size: $secondary-font-size
     letter-spacing: $secondary-letter-spacing
 
-    @include responsive(map-get($breakpoints, "lg"))
+    @include responsive(map.get($breakpoints, "lg"))
         margin: 0 0 20px 15px
         font-size: 29px
 
@@ -63,7 +64,7 @@
     
     background-color: $secondary-bg
 
-    @include responsive(map-get($breakpoints, "lg"))
+    @include responsive(map.get($breakpoints, "lg"))
         font-size: 12px
 
 .movie_rate

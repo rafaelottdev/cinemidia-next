@@ -1,6 +1,7 @@
 @use "../../styles/abstracts/mixins" as *
 @use "../../styles/abstracts/variables" as *
 @use "../../styles/abstracts/breakpoints" as *
+@use "sass:map"
     
 .slide_control_container
     width: 100%
@@ -12,7 +13,7 @@
     position: absolute
     bottom: 10px
 
-    @include responsive(map-get($breakpoints, "lg"))
+    @include responsive(map.get($breakpoints, "lg"))
         gap: 10px
         bottom: 65px
 
@@ -37,7 +38,7 @@
         width: 13px
         fill: rgba(255, 255, 255, 0.5)
 
-        @include responsive(map-get($breakpoints, "lg"))
+        @include responsive(map.get($breakpoints, "lg"))
             width: 20px
 
     &:first-child
@@ -46,7 +47,7 @@
     &:last-child
         @include border-radius(right)
 
-    @include responsive(map-get($breakpoints, "lg"))
+    @include responsive(map.get($breakpoints, "lg"))
         width: 50px
         height: 50px
 
