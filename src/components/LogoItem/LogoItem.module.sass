@@ -2,6 +2,7 @@
 @use "../../styles/abstracts/mixins" as *
 @use "../../styles/abstracts/mixins" as *
 @use "../../styles/abstracts/breakpoints" as *
+@use "sass:map"
     
 .logo_link
     @include flex-center
@@ -27,7 +28,7 @@
             color: $primary-color
             font-family: $logo-font
 
-    @include responsive(map-get($breakpoints, "lg"))
+    @include responsive(map.get($breakpoints, "lg"))
         position: absolute
         left: 50%
         top: 125px

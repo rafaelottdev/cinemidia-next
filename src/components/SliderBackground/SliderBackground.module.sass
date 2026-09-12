@@ -1,9 +1,12 @@
 @use "../../styles/abstracts/variables" as *
 @use "../../styles/abstracts/mixins" as *
+@use "../../styles/abstracts/breakpoints" as *
+@use "sass:map"
 
 .background_fixed
-    width: $background-width
-    height: $background-height
+    width: 100vw
+    height: 100vh
+    overflow: hidden
     
 .slider_container
     display: flex
@@ -11,8 +14,8 @@
     transition: $smooth-slide
 
 .movie_wrapp_item
-    flex: 0 0 $background-width
-    height: $background-height
+    flex: 0 0 100vw
+    height: 100vh
 
     position: relative
     background-color: #1c1a1a
@@ -31,12 +34,19 @@
 
     color: $primary-color
 
+    @include responsive(map.get($breakpoints, "lg"))
+        top: 150px
+
 .movie_title
     margin: 0 0 20px 30px
 
     font-family: $secondary-font
     font-size: $secondary-font-size
     letter-spacing: $secondary-letter-spacing
+
+    @include responsive(map.get($breakpoints, "lg"))
+        margin: 0 0 20px 15px
+        font-size: 29px
 
 .movie_data
     min-height: 30px
@@ -48,11 +58,14 @@
 
     font-family: $movie-data-font
     font-size: $primary-font-size
-    letter-spacing: $movie-data-letter-spacing
+    letter-spacing: .5px
 
     @include border-radius(right)
     
     background-color: $secondary-bg
+
+    @include responsive(map.get($breakpoints, "lg"))
+        font-size: 12px
 
 .movie_rate
     display: flex
@@ -62,8 +75,6 @@
     svg
         width: 13px
         height: 12px
-
-        margin-bottom: .5px
 
         fill: yellow
 

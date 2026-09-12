@@ -1,6 +1,7 @@
 @use "../../styles/abstracts/variables" as *
 @use "../../styles/abstracts/mixins" as *
 @use "../../styles/abstracts/breakpoints" as *
+@use "sass:map"
     
 .header
     width: 100vw
@@ -24,13 +25,13 @@
 
         transition: .5s
 
-        @include responsive(map-get($breakpoints, "lg"))
+        @include responsive(map.get($breakpoints, "lg"))
             display: none
 
     &.scrolled::after
         width: 100%
 
-    @include responsive(map-get($breakpoints, "lg"))
+    @include responsive(map.get($breakpoints, "lg"))
         width: 230px
         height: 100vh
 
@@ -42,7 +43,7 @@
 .menu_btn
     display: none
 
-    @include responsive(map-get($breakpoints, "lg"))
+    @include responsive(map.get($breakpoints, "lg"))
         display: block
         position: fixed
         top: 50px
@@ -51,7 +52,7 @@
         background-color: transparent
 
 .menu_bar
-    @include responsive(map-get($breakpoints, "lg"))
+    @include responsive(map.get($breakpoints, "lg"))
         width: 2.25rem
         height: 0.188rem
 
@@ -73,7 +74,7 @@
 
     z-index: 1
 
-    @include responsive(map-get($breakpoints, "lg"))
+    @include responsive(map.get($breakpoints, "lg"))
         height: 100%
         padding: 200px 0px 0px 0px
 
@@ -110,23 +111,25 @@
             z-index: 1
             border-radius: 5px
 
-            @include responsive(map-get($breakpoints, "lg"))
+            @include responsive(map.get($breakpoints, "lg"))
                 justify-content: flex-start
                 right: -25px
 
         &:last-child
             width: 0%
-            padding-left: 25px
             z-index: 0
-            justify-content: flex-start
+
+            @include responsive(map.get($breakpoints, "lg"))
+                padding-left: 25px
+                justify-content: flex-start
 
             svg
                 font-size: 18px
 
-                @include responsive(map-get($breakpoints, "lg"))
+                @include responsive(map.get($breakpoints, "lg"))
                     font-size: 21px
 
-    @include responsive(map-get($breakpoints, "lg"))
+    @include responsive(map.get($breakpoints, "lg"))
         width: 100%
         height: 50px
 
@@ -152,7 +155,7 @@
                 z-index:1
                 background-color: $header-bg
 
-        @include responsive(map-get($breakpoints, "lg"))
+        @include responsive(map.get($breakpoints, "lg"))
             transform: scale(1)
 
 // Estilo Interativo
@@ -174,10 +177,10 @@
             svg
                 font-size: 18px
 
-                @include responsive(map-get($breakpoints, "lg"))
+                @include responsive(map.get($breakpoints, "lg"))
                     font-size: 21px
 
-    @include responsive(map-get($breakpoints, "lg"))
+    @include responsive(map.get($breakpoints, "lg"))
         transform: scale(1)
 
 .show
