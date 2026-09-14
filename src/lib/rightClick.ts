@@ -4,6 +4,6 @@ export function rightClick(
   popularMoviesLength: number,
 ) {
   if (currentIndex < popularMoviesLength) {
-    setCurrentIndex((currentIndex: number) => currentIndex + 1)
+    setCurrentIndex((index: number) => index + 1)
   }
 }

@@ -55,6 +55,7 @@ function Header() {
                 ${styles.base_page_link_btn}
                 ${pathName === "/movies" ? styles.selected : styles.page_link_btn}
               `}
+              onClick={handleMenu}
             >
               <span>Filmes</span>
 
@@ -71,6 +72,7 @@ function Header() {
                 ${styles.base_page_link_btn}
                 ${pathName === "/series" ? styles.selected : styles.page_link_btn}
               `}
+              onClick={handleMenu}
             >
               <span>Séries</span>
 
@@ -80,7 +82,7 @@ function Header() {
             </Link>
           </li>
 
-          <LogoItem pathName={pathName} />
+          <LogoItem pathName={pathName} handleMenu={handleMenu} />
 
           <li className={styles.nav_item}>
             <Link
@@ -89,6 +91,7 @@ function Header() {
                 ${styles.base_page_link_btn}
                 ${pathName === "/popular" ? styles.selected : styles.page_link_btn}
               `}
+              onClick={handleMenu}
             >
               <span>Populares</span>
 
@@ -105,6 +108,7 @@ function Header() {
                 ${styles.base_page_link_btn}
                 ${pathName === "/watchlist" ? styles.selected : styles.page_link_btn}
               `}
+              onClick={handleMenu}
             >
               <span>Watchlist</span>
 
