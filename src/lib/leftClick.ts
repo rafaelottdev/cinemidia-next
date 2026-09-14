@@ -3,6 +3,6 @@ export function leftClick(
   setCurrentIndex: React.Dispatch<React.SetStateAction<number>>,
 ) {
   if (currentIndex > 0) {
-    setCurrentIndex((currentIndex: number) => currentIndex - 1)
+    setCurrentIndex((index: number) => index - 1)
   }
 }
