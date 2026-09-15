@@ -1,10 +1,16 @@
 @use "../abstracts/variables" as *
+@use "../../styles/abstracts/mixins" as *
+@use "../../styles/abstracts/breakpoints" as *
+@use "sass:map"
   
 .catalog_list
   display: flex
   justify-content: center
   flex-wrap: wrap
   gap: 35px
+
+  @include responsive(map.get($breakpoints, "lg"))
+    gap: 15px
 
 .no_media_text
   margin-bottom: 20px

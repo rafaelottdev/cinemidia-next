@@ -1,19 +1,29 @@
 @use "../../styles/abstracts/variables" as *
 @use "../../styles/abstracts/mixins" as *
+@use "../../styles/abstracts/breakpoints" as *
+@use "sass:map"
   
 .search_container
   @include flex-center
-  gap: 10px
+  gap: 5px
 
   position: absolute
   right: 185px
   top: 50%
   transform: translateY(-50%)
 
+  @include responsive(map.get($breakpoints, "lg"))
+    right: 20px
+    top: -188%
+    transform: translateY(0%)
+
 .search_input_container
   width: 300px
   height: 30px
   position: relative
+
+  @include responsive(map.get($breakpoints, "lg"))
+    width: 210px
 
 .input_wrapp
   height: 100%

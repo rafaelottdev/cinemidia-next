@@ -1,6 +1,6 @@
 @use "../../styles/abstracts/variables" as *
 @use "../../styles/abstracts/mixins" as *
-    
+ 
 .catalog_page
     min-height: calc(100vh - 30px) // screen height minus footer height
     padding: $header-height 0px 50px 0px
@@ -10,7 +10,9 @@
 
 .catalog_title_container
     margin: 60px 0 50px 0
+
     @include flex-center
+
     user-select: none
     position: relative
 
