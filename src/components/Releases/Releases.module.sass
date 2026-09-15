@@ -1,3 +1,8 @@
+@use "../../styles/abstracts/variables" as *
+@use "../../styles/abstracts/mixins" as *
+@use "../../styles/abstracts/breakpoints" as *
+@use "sass:map"
+    
 .releases_section
     position: relative
 
@@ -27,7 +32,10 @@
     gap: 50px
 
     place-items: center
-            
+
+    @include responsive(map.get($breakpoints, "lg"))
+        grid-template-columns: repeat(1, 1fr)
+        gap: 30px
 
 .bg_bow
     display: flex
@@ -38,3 +46,6 @@
     img
         width: 100vw
         height: auto
+
+        @include responsive(map.get($breakpoints, "lg"))
+            height: 10px

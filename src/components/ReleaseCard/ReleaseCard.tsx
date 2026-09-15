@@ -19,7 +19,12 @@ function ReleaseCard({ movie, currentGenres }: MovieList) {
         href={`movies/${formatTitle(movie.title)}/${movie.id}`}
         className={styles.movie_link}
       >
-        <div className={styles.img_wrapp}>
+        <div
+          className={styles.img_wrapp}
+          style={{
+            backgroundImage: `url(${tmdbData.TMDB_IMG_URL}/w1280${movie.backdrop_path})`,
+          }}
+        >
           <Image
             src={`${tmdbData.TMBD_IMG_URL_300}${movie.poster_path}`}
             alt="poster do filme"
