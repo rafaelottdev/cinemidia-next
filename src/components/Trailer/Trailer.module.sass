@@ -1,4 +1,7 @@
 @use "../../styles/abstracts/variables" as *
+@use "../../styles/abstracts/mixins" as *
+@use "../../styles/abstracts/breakpoints" as *
+@use "sass:map"
     
 .trailer_section
     padding: 60px 0px
@@ -15,3 +18,7 @@
         width: 850px
         height: 450px
         background-color: #080808
+
+        @include responsive(map.get($breakpoints, "lg"))
+            width: 350px
+            height: 200px

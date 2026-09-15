@@ -22,7 +22,7 @@ function ReleaseCard({ movie, currentGenres }: MovieList) {
         <div
           className={styles.img_wrapp}
           style={{
-            backgroundImage: `url(${tmdbData.TMDB_IMG_URL}/w1280${movie.backdrop_path})`,
+            backgroundImage: `url(${tmdbData.TMDB_IMG_URL}/w780${movie.backdrop_path})`,
           }}
         >
           <Image
