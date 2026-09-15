@@ -32,5 +32,3 @@ async function Movies({
 }
 
 export default Movies
-
-// fazer a pagina (s) de not-found -> mobile // estudar testes detarde !MUITO IMPORTANTE
