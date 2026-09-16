@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { useCallback, useEffect, useState } from "react"
+import { useCallback, useEffect, useRef, useState } from "react"
 import { FaRegBookmark } from "react-icons/fa"
 import { ImFire } from "react-icons/im"
 import { LuClapperboard, LuTv } from "react-icons/lu"
@@ -13,10 +13,15 @@ function Header() {
   const [scrolled, setScrolled] = useState(false)
   const [show, setShow] = useState(false)
   const pathName = usePathname()
+  const menuRef = useRef<HTMLButtonElement>(null)
 
   const handleScroll = useCallback(() => {
     setScrolled(window.scrollY > 0)
   }, [])
+
+  function handleMenu() {
+    setShow((prev) => !prev)
+  }
 
   useEffect(() => {
     if (window.scrollY > 0) {
@@ -28,12 +33,21 @@ function Header() {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [handleScroll])
 
-  function handleMenu() {
-    setShow((prev) => !prev)
-  }
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+        setShow(false)
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside)
+
+    return () => document.removeEventListener("mousedown", handleClickOutside)
+  }, [])
 
   return (
     <header
+      ref={menuRef}
       className={`${styles.header} ${scrolled ? styles.scrolled : ""} ${show ? styles.show : ""}`}
     >
       <button
