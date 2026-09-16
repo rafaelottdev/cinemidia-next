@@ -1,5 +1,7 @@
 @use "../../styles/abstracts/mixins" as *
 @use "../../styles/abstracts/variables" as *
+@use "../../styles/abstracts/breakpoints" as *
+@use "sass:map"
   
 .slider_container
   width: 1000px
@@ -12,6 +14,12 @@
 
   border-radius: 50px
   background: black
+
+  @include responsive(map.get($breakpoints, "lg"))
+    width: 90%
+    height: 700px
+
+    border-radius: 20px
 
 .slider_control_btn
   width: 30px
@@ -29,21 +37,34 @@
   &:hover
     background-color: $primary-bg
 
+  @include responsive(map.get($breakpoints, "lg"))
+    width: 55px
+    height: 55px
+
   svg
     width: 15px
     fill: rgba(255, 255, 255, 0.5)
+
+    @include responsive(map.get($breakpoints, "lg"))
+      width: 20px
 
   &:first-child
     top: 50%
     left: 30px
     
     @include border-radius(left)
+
+    @include responsive(map.get($breakpoints, "lg"))
+      top: 65%
     
   &:last-child
     top: 50%
     right: 30px
 
     @include border-radius(right)
+
+    @include responsive(map.get($breakpoints, "lg"))
+      top: 65%
 
 .blocked
   background-color: #cccccc0d
@@ -81,10 +102,15 @@
 
 .movie_data
   width: 500px
-  margin: 100px 0px 0px 130px
+  margin: 100px 0 0 130px
 
   z-index: 1
   position: relative
+
+  @include responsive(map.get($breakpoints, "lg"))
+    width: 100%
+    margin: 50px 0px 0px 0px
+    padding: 0 15px
 
 .movie_title
   margin-bottom: 15px
@@ -95,6 +121,10 @@
   font-size: 1.7em
   letter-spacing: 1.5px
   font-family: $secondary-font
+
+  @include responsive(map.get($breakpoints, "lg"))
+    justify-content: center
+    margin-bottom: 25px
   
 .movie_overview
   margin-bottom: 20px
@@ -105,8 +135,14 @@
   letter-spacing: .5px
   text-align: justify
 
+  @include responsive(map.get($breakpoints, "lg"))
+    margin-bottom: 30px
+    font-size: 16px
+    line-height: 1.5em
+
 .movie_genres_list
   display: flex
+  justify-content: center
   gap: 20px
 
   li
@@ -123,6 +159,9 @@
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1)
     backdrop-filter: blur(5px)
 
+    @include responsive(map.get($breakpoints, "lg"))
+      font-size: 13px
+
 .poster_wrapp
   display: flex
   flex-direction: column
@@ -132,6 +171,11 @@
   position: absolute
   bottom: 30px
   right: 130px
+
+  @include responsive(map.get($breakpoints, "lg"))
+    right: 50%
+    transform: translateX(50%)
+    gap: 15px
 
   img
     width: 120px
@@ -143,6 +187,10 @@
 
     &:has(+ .see_more_link:hover)
       transform: scale(.9)
+
+    @include responsive(map.get($breakpoints, "lg"))
+      width: 150px
+      height: 190px
 
 .see_more_link
   width: 95px
@@ -160,6 +208,12 @@
   border-radius: 3px
   color: #ffffffac
   background: rgba(255, 255, 255, 0.099)
+
+  @include responsive(map.get($breakpoints, "lg"))
+    width: 120px
+    height: 35px
+
+    font-size: 13px
 
   &:hover
     span

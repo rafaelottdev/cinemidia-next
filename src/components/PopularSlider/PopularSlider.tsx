@@ -2,7 +2,7 @@
 
 import Image from "next/image"
 import Link from "next/link"
-import { useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { TbShare3 } from "react-icons/tb"
 import tmdbData from "@/config/tmdb"
 import formatTitle from "@/lib/formatTitle"
@@ -19,10 +19,49 @@ interface TmdbData {
 
 function PopularSlider({ selectedPopularMovies, genresList }: TmdbData) {
   const [currentIndex, setCurrentIndex] = useState<number>(0)
+  const [currentSliderWidth, setCurrentSliderWidth] = useState<number>(1000)
   const popularMoviesLength = selectedPopularMovies.length - 1
+  const currentSlider = useRef<HTMLDivElement>(null)
+
+  const touchStartX = useRef<number>(0)
+
+  function handleTouchStart(event: React.TouchEvent) {
+    touchStartX.current = event.changedTouches[0].screenX
+  }
+
+  function handleTouchEnd(event: React.TouchEvent) {
+    const touchEndX = event.changedTouches[0].screenX
+
+    const diff = touchStartX.current - touchEndX
+
+    if (diff > 50) {
+      rightClick(currentIndex, setCurrentIndex, popularMoviesLength)
+    } else if (diff < -50) {
+      leftClick(currentIndex, setCurrentIndex)
+    }
+  }
+
+  useEffect(() => {
+    function handleResize() {
+      const width = currentSlider.current?.clientWidth
+
+      setCurrentSliderWidth(width ?? 0)
+    }
+
+    handleResize()
+
+    window.addEventListener("resize", handleResize)
+
+    return () => window.removeEventListener("resize", handleResize)
+  }, [])
 
   return (
-    <div className={styles.slider_container}>
+    <div
+      className={styles.slider_container}
+      ref={currentSlider}
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
+    >
       <button
         type="button"
         className={`${styles.slider_control_btn} ${currentIndex <= 0 ? styles.blocked : ""}`}
@@ -36,7 +75,9 @@ function PopularSlider({ selectedPopularMovies, genresList }: TmdbData) {
 
       <ul
         className={styles.slider_list}
-        style={{ transform: `translateX(-${currentIndex * 1000}px)` }}
+        style={{
+          transform: `translateX(-${currentIndex * currentSliderWidth}px)`,
+        }}
       >
         {selectedPopularMovies.map((movie) => {
           const backgroundUrl = `${tmdbData.TMDB_IMG_URL}/w1280${movie.backdrop_path}`
