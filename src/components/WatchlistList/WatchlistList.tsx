@@ -50,10 +50,6 @@ function WatchlistList() {
             <Link href="/series" className="no_media_btn">
               Séries
             </Link>
-
-            <Link href="/popular" className="no_media_btn">
-              Populares
-            </Link>
           </div>
         </li>
       )}
