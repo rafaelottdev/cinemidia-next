@@ -21,7 +21,7 @@ function PopularSlider({ selectedPopularMovies, genresList }: TmdbData) {
   const [currentIndex, setCurrentIndex] = useState<number>(0)
   const [currentSliderWidth, setCurrentSliderWidth] = useState<number>(1000)
   const popularMoviesLength = selectedPopularMovies.length - 1
-  const currentSlider = useRef<HTMLElement>(null)
+  const currentSlider = useRef<HTMLDivElement>(null)
 
   const touchStartX = useRef<number>(0)
 
