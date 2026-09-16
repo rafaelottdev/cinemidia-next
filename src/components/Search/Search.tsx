@@ -9,6 +9,7 @@ function Search() {
   const searchParams = useSearchParams()
   const pathName = usePathname()
   const { replace } = useRouter()
+  const searchRef = useRef<HTMLDivElement>(null)
 
   const inputRef = useRef<HTMLInputElement>(null)
   const query = searchParams.get("query")
@@ -28,6 +29,27 @@ function Search() {
       input.setSelectionRange(size, size)
     }
   }, [query])
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (
+        searchRef.current &&
+        !searchRef.current.contains(event.target as Node)
+      ) {
+        setOpenSearch(false)
+        setSearch("")
+
+        const params = new URLSearchParams(searchParams)
+        params.delete("query")
+
+        replace(`${pathName}?${params.toString()}`)
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside)
+
+    return () => document.removeEventListener("mousedown", handleClickOutside)
+  }, [pathName, replace, searchParams])
 
   function handleSearch(text: string) {
     setSearch(text)
@@ -59,7 +81,7 @@ function Search() {
   }
 
   return (
-    <div className={styles.search_container}>
+    <div className={styles.search_container} ref={searchRef}>
       <div className={styles.search_input_container}>
         <div
           className={styles.input_wrapp}
