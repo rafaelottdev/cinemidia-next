@@ -9,7 +9,9 @@
     "lint": "biome check",
     "format": "biome format --write",
     "prepare": "husky",
-    "commit": "git-cz"
+    "commit": "git-cz",
+    "test": "vitest run",
+    "test:live": "vitest"
   },
   "dependencies": {
     "next": "16.2.12",
@@ -21,17 +23,18 @@
     "@biomejs/biome": "2.2.0",
     "@commitlint/cli": "^21.2.1",
     "@commitlint/config-conventional": "^21.2.0",
-    "@tailwindcss/postcss": "^4",
-    "@types/node": "^20",
+    "@types/node": "^22.20.3",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "commitizen": "^4.3.2",
     "cz-conventional-changelog": "^3.3.0",
     "husky": "^9.1.7",
+    "jsdom": "^29.1.1",
     "lint-staged": "^16.4.0",
+    "msw": "^2.15.0",
     "sass": "^1.102.0",
-    "tailwindcss": "^4",
-    "typescript": "^5"
+    "typescript": "^5",
+    "vitest": "^5.0.1"
   },
   "config": {
     "commitizen": {
