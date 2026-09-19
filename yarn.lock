@@ -310,10 +310,26 @@
   resolved "https://registry.npmjs.org/@csstools/css-tokenizer/-/css-tokenizer-4.0.1.tgz"
   integrity sha512-bPlN9S9O1A0euCpEWE4qnvB5YDuyYVsUTrxSgmAM1Is0j4tICHoVyOVAXfWMP/kS9ZrjvyIXWV2PmomiAXXqOw==
 
-"@emnapi/runtime@^1.11.1", "@emnapi/runtime@^1.7.0":
+"@emnapi/core@^1.11.1", "@emnapi/core@^1.7.1":
+  version "1.11.1"
+  dependencies:
+    "@emnapi/wasi-threads" "1.2.2"
+    tslib "^2.4.0"
+
+"@emnapi/runtime@^1.11.1", "@emnapi/runtime@^1.7.1":
+  version "1.11.1"
+  dependencies:
+    tslib "^2.4.0"
+
+"@emnapi/runtime@^1.7.0":
   version "1.11.3"
   resolved "https://registry.npmjs.org/@emnapi/runtime/-/runtime-1.11.3.tgz"
   integrity sha512-Xz4Tpyki7XyrpbUK1jR1AhdAdaXyhhY4lZ3neLodmhpuWfy2PAQN5B46sAiU4liOXGLkHypn/qU+jvfWSCYYLA==
+  dependencies:
+    tslib "^2.4.0"
+
+"@emnapi/wasi-threads@^1.2.2", "@emnapi/wasi-threads@1.2.2":
+  version "1.2.2"
   dependencies:
     tslib "^2.4.0"
 
@@ -558,6 +574,11 @@
     is-node-process "^1.2.0"
     outvariant "^1.4.3"
     strict-event-emitter "^0.5.1"
+
+"@napi-rs/wasm-runtime@^1.1.4":
+  version "1.1.4"
+  dependencies:
+    "@tybys/wasm-util" "^0.10.1"
 
 "@next/env@16.2.12":
   version "16.2.12"
@@ -847,6 +868,11 @@
     "@tailwindcss/oxide" "4.3.3"
     postcss "^8.5.16"
     tailwindcss "4.3.3"
+
+"@tybys/wasm-util@^0.10.1", "@tybys/wasm-util@^0.10.2":
+  version "0.10.2"
+  dependencies:
+    tslib "^2.4.0"
 
 "@types/chai@^5.2.2":
   version "5.2.3"
