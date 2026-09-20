@@ -1,8 +1,9 @@
 import { expect, it } from "vitest"
 import getUpComingMovies from "@/lib/getUpComingMovies"
+import type { PopularMovies } from "@/types/popularMovies"
 
 it("", async () => {
-  const movies = [
+  const movies: PopularMovies[] = [
     {
       backdrop_path: "path 1",
       genre_ids: [1],

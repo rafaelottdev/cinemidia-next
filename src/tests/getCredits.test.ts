@@ -1,8 +1,9 @@
 import { expect, it } from "vitest"
 import getCredits from "@/lib/getCredits"
+import type { Cast } from "@/types/cast"
 
 it("should return the movie cast", async () => {
-  const cast = [
+  const cast: Cast[] = [
     {
       id: 1,
       original_name: "name 1",
