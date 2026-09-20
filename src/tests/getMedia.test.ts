@@ -2,11 +2,13 @@ import { describe, expect, it } from "vitest"
 import getMovies from "@/lib/getMovies"
 import getPopularMovies from "@/lib/getPopularMovies"
 import getSeries from "@/lib/getSeries"
+import type { PopularMovies } from "@/types/popularMovies"
+import type { Series } from "@/types/series"
 
 describe("", () => {
   describe("movies", () => {
     it("should return movies", async () => {
-      const movie = [
+      const movie: PopularMovies[] = [
         {
           backdrop_path: "path 1",
           genre_ids: [1],
@@ -29,7 +31,7 @@ describe("", () => {
     })
 
     it("should return popular movies", async () => {
-      const movie = [
+      const movie: PopularMovies[] = [
         {
           backdrop_path: "path 1",
           genre_ids: [1],
@@ -54,7 +56,7 @@ describe("", () => {
 
   describe("series", () => {
     it("should return series", async () => {
-      const seriesList = [
+      const seriesList: Series[] = [
         {
           backdrop_path: "path 1",
           first_air_date: "date 1",

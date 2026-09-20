@@ -1,8 +1,9 @@
 import { expect, it } from "vitest"
 import getTrailer from "@/lib/getTrailer"
+import type { Trailers } from "@/types/trailers"
 
 it("should return movie trailer", async () => {
-  const trailerList = {
+  const trailerList: Trailers = {
     name: "name 1",
     key: "key 1",
     site: "YouTube",

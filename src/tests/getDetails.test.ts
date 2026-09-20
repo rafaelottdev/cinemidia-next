@@ -1,10 +1,12 @@
 import { describe, expect, it } from "vitest"
 import getMoviesDetails from "@/lib/getMoviesDetails"
 import getSeriesDetails from "@/lib/getSeriesDetails"
+import type { MovieDetails } from "@/types/movieDetails"
+import type { SeriesDetails } from "@/types/seriesDetails"
 
 describe("movie", () => {
   it("should return movie details", async () => {
-    const details = [
+    const details: MovieDetails[] = [
       {
         backdrop_path: "path 1",
         budget: 1,
@@ -34,9 +36,9 @@ describe("movie", () => {
   })
 })
 
-describe("should return series details", () => {
-  it("", async () => {
-    const details = [
+describe("series", () => {
+  it("should return series details", async () => {
+    const details: SeriesDetails[] = [
       {
         backdrop_path: "string",
         episode_run_time: [1],
