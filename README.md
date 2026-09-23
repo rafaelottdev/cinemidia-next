@@ -1,36 +1,169 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Cinemidia Next
 
-## Getting Started
+Aplicação web para explorar filmes e séries utilizando a API do TMDB.
 
-First, run the development server:
+O **Cinemidia Next** é uma evolução do projeto [Cinemidia](https://github.com/rafaelottdev/cinemidia), originalmente desenvolvido em Vue.js. Nesta versão, o projeto foi reconstruído com **Next.js, React, TypeScript e Sass**, com foco em uma arquitetura mais moderna, melhor experiência de usuário, performance e qualidade de código.
+
+## Preview
+
+<img width="380" height="200" alt="Captura de tela 2026-09-21 104721" src="https://github.com/user-attachments/assets/f4d57eca-497b-42d1-8309-0bf77361d554" />
+<img width="130" height="230" alt="iPhone-14-Pro-393x685" src="https://github.com/user-attachments/assets/1a642ff1-0868-40e7-85ef-4c95c37b69ce" />
+
+## Principais recursos
+
+* Catálogo de filmes e séries
+* Página de detalhes de filmes e séries
+* Sistema de busca
+* Watchlist com persistência no navegador
+* Infinite scroll para filmes e séries
+* Indicação de itens já adicionados à Watchlist
+* Página de lançamentos
+* Página de populares
+* Trailers integrados
+* Loading com Skeleton
+* Suspense para carregamento de conteúdo
+* Página personalizada para rotas não encontradas
+* Indicação da página atual durante a navegação
+* Interface responsiva para desktop e mobile
+
+## Tecnologias
+
+### Front-end
+
+* Next.js
+* React
+* TypeScript
+* Sass
+
+### API
+
+* TMDB API
+
+### Qualidade e desenvolvimento
+
+* Biome
+* Vitest
+* Playwright
+* Husky
+* Commitlint
+* Conventional Commits
+* GitHub Actions (CI)
+
+## Performance
+
+O projeto utiliza recursos do Next.js para melhorar o carregamento e a experiência de navegação:
+
+* Server-Side Rendering (SSR)
+* Client-Side Rendering (CSR)
+* Cache
+* Suspense
+* Skeleton loading
+* Infinite scroll
+* Componentização e renderização otimizada
+
+## Qualidade de código
+
+O projeto possui ferramentas e processos para manter um padrão de qualidade durante o desenvolvimento.
+
+### Biome
+
+Utilizado para formatação e análise estática do código, mantendo um padrão consistente no projeto.
+
+### Testes
+
+Os testes são realizados utilizando:
+
+* **Vitest** para testes automatizados
+* **Playwright** para testes End-to-End
+
+### CI
+
+O projeto possui uma pipeline de **CI com GitHub Actions**, utilizada para validar o código automaticamente.
+
+### Git Hooks
+
+O **Husky** executa verificações antes dos commits, enquanto o **Commitlint** garante que as mensagens sigam o padrão definido pelo **Conventional Commits**.
+
+### Proteção da branch principal
+
+A branch `main` possui regras para impedir pushes diretos, fazendo com que alterações sejam integradas através do fluxo de Pull Requests.
+
+## Integração com TMDB
+
+O Cinemidia Next utiliza a [TMDB API](https://www.themoviedb.org/documentation/api) para obter informações sobre filmes e séries, incluindo:
+
+* Filmes populares
+* Séries populares
+* Lançamentos
+* Informações detalhadas
+* Gêneros
+* Trailers
+* Imagens e posters
+
+## Instalação
+
+Clone o repositório:
+
+```bash
+git clone https://github.com/rafaelottdev/cinemidia-next.git
+```
+
+Entre na pasta:
+
+```bash
+cd cinemidia-next
+```
+
+Instale as dependências:
+
+```bash
+npm install
+```
+
+Execute o projeto em desenvolvimento:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+O projeto estará disponível em:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```text
+http://localhost:3000
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+A chave da API pode ser obtida através da [TMDB](https://www.themoviedb.org/).
 
-## Learn More
+## Evolução do projeto
 
-To learn more about Next.js, take a look at the following resources:
+O Cinemidia Next foi desenvolvido como uma evolução do Cinemidia original, trazendo melhorias significativas em arquitetura, experiência de usuário e qualidade de desenvolvimento.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Entre as principais evoluções estão:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+* Migração de Vue.js para Next.js e React
+* Migração de JavaScript para TypeScript
+* Novo sistema de loading com Skeleton e Suspense
+* Sistema de busca funcional
+* Páginas individuais para filmes e séries
+* Infinite scroll
+* Melhorias gerais na interface e responsividade
+* Mais informações nos cards
+* Watchlist com feedback visual
+* SSR, CSR e cache
+* Testes automatizados
+* CI/CD e validações automatizadas
+* Padronização de commits
+* Fluxo de desenvolvimento com proteção da branch principal
 
-## Deploy on Vercel
+## Desenvolvido por
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+**Rafael Ott**
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+* [LinkedIn](https://www.linkedin.com/in/rafael-ott-8435572b1/)
+* [GitHub](https://github.com/rafaelottdev)
+
+## Licença
+
+Projeto desenvolvido para fins educacionais e de portfólio.
+
+Os dados e imagens de filmes e séries são fornecidos pela TMDB e utilizados de acordo com os termos da plataforma.
