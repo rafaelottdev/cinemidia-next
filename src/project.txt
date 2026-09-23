@@ -26,5 +26,3 @@ O que pode ser adicionado
 observações
 
     - no header a gente teve um problema por causa do posicionamento do logo e das navegações ver sobre esse erro, acho que o logo ta no meio nos elementos e isso dificultou algo, dar uma olhada
-
-terminar de estudar vitest (ja no projeto) - depois estudar msw (ja no projeto) - depois estudar playwrite (colocar no projeto)
