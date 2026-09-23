@@ -30,27 +30,6 @@ function Search() {
     }
   }, [query])
 
-  useEffect(() => {
-    function handleClickOutside(event: MouseEvent) {
-      if (
-        searchRef.current &&
-        !searchRef.current.contains(event.target as Node)
-      ) {
-        setOpenSearch(false)
-        setSearch("")
-
-        const params = new URLSearchParams(searchParams)
-        params.delete("query")
-
-        replace(`${pathName}?${params.toString()}`)
-      }
-    }
-
-    document.addEventListener("mousedown", handleClickOutside)
-
-    return () => document.removeEventListener("mousedown", handleClickOutside)
-  }, [pathName, replace, searchParams])
-
   function handleSearch(text: string) {
     setSearch(text)
 
