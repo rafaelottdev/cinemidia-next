@@ -63,6 +63,7 @@ function CatalogCard({ catalog, handleRemove }: Catalog) {
 
           <button
             type="button"
+            aria-label="botão de adicionar e remover da watchlist"
             className={`${styles.base_watchlist_btn} ${watchlist ? styles.remove_watchlist_btn : styles.add_watchlist_btn}`}
             onClick={(event) => {
               event.preventDefault()

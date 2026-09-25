@@ -73,6 +73,7 @@ function Search() {
             autoComplete="off"
             ref={inputRef}
             value={search}
+            placeholder="Nome do filme ou série"
             onChange={(txt) => handleSearch(txt.target.value)}
           />
         </div>
@@ -80,6 +81,7 @@ function Search() {
 
       <button
         type="button"
+        aria-label="Pesquisar"
         onClick={handleClick}
         className={styles.search_button}
       >
