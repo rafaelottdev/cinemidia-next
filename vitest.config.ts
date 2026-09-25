@@ -11,5 +11,6 @@ export default defineConfig({
   test: {
     environment: "jsdom", // Ativa o localStorage do jsdom
     setupFiles: ["./src/tests/setup.ts"],
+    exclude: ["**/node_modules/**", "**/dist/**", "**/src/tests/playwright/**"],
   },
 })
