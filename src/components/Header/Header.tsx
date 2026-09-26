@@ -53,6 +53,7 @@ function Header() {
       <button
         type="button"
         className={`${styles.menu_btn} ${show ? styles.transform : ""}`}
+        aria-label="menu hamburguer"
         onClick={handleMenu}
       >
         <div className={styles.menu_bar}></div>
