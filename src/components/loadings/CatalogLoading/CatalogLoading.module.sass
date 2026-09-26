@@ -1,12 +1,22 @@
+@use "../../../styles/abstracts/mixins" as *
+@use "../../../styles/abstracts/breakpoints" as *
+@use "sass:map"
+  
 .loading
   display: flex
   justify-content: center
   flex-wrap: wrap
   gap: 35px
+
+  @include responsive(map.get($breakpoints, "lg"))
+    gap: 15px
   
   div
     width: 200px
     position: relative
+
+    @include responsive(map.get($breakpoints, "lg"))
+      width: 170px
 
     div
       background: black
@@ -18,6 +28,10 @@
         position: relative
 
         border-radius: 15px
+
+        @include responsive(map.get($breakpoints, "lg"))
+          width: 100%
+          height: 220px
 
         &::after
           width: 0%

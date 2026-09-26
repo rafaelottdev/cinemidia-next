@@ -1,3 +1,7 @@
+@use "../../../styles/abstracts/mixins" as *
+@use "../../../styles/abstracts/breakpoints" as *
+@use "sass:map"
+
 .loading 
     width: 100vw
     height: 100vh
@@ -34,6 +38,8 @@
     flex-direction: column
     gap: 20px
 
+    @include responsive(map.get($breakpoints, "lg"))
+        top: 150px
 
 .skeleton_title
     width: 400px
@@ -44,6 +50,11 @@
     position: relative
 
     background-color: #080808
+
+    @include responsive(map.get($breakpoints, "lg"))
+        width: 300px
+        height: 35px
+        margin: 0 0 20px 15px
 
     &::after
         width: 0%
@@ -69,6 +80,10 @@
 
     position: relative
 
+    @include responsive(map.get($breakpoints, "lg"))
+        width: 280px
+        height: 30px
+
     &::after
         width: 0%
         height: 100%
@@ -90,6 +105,10 @@
     display: flex
     gap: 20px
 
+    @include responsive(map.get($breakpoints, "lg"))
+        left: 25px
+        bottom: 160px
+
 .cover
     width: 215px
     height: 280px
@@ -98,6 +117,12 @@
     position: relative
 
     background-color: #080808
+
+    @include responsive(map.get($breakpoints, "lg"))
+        width: 130px
+        height: 175px
+
+        border-radius: 10px
 
     &::after
         width: 0%
@@ -121,11 +146,19 @@
     position: absolute
     bottom: 10px
 
+    @include responsive(map.get($breakpoints, "lg"))
+        gap: 10px
+        bottom: 65px
+
     div
         width: 30px
         height: 30px
 
         background-color: #080808
+
+        @include responsive(map.get($breakpoints, "lg"))
+            width: 50px
+            height: 50px
 
         &:first-child
             border-top-left-radius: 10px
@@ -134,7 +167,6 @@
         &:last-child
             border-top-right-radius: 10px
             border-bottom-right-radius: 10px
-
 
 @keyframes loading 
     from

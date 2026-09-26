@@ -1,3 +1,7 @@
+@use "../../../styles/abstracts/mixins" as *
+@use "../../../styles/abstracts/breakpoints" as *
+@use "sass:map"
+  
 .loading
   padding: 50px
 
@@ -5,6 +9,11 @@
   flex-wrap: wrap
   justify-content: space-between
   background: #0F0F0F
+
+  @include responsive(map.get($breakpoints, "lg"))
+    justify-content: center
+    column-gap: 70px
+    row-gap: 20px
 
 .left_container_loading
   display: flex
@@ -15,6 +24,10 @@
 .top_wrapp_loading
   display: flex
   gap: 20px
+
+  @include responsive(map.get($breakpoints, "lg"))
+    flex-direction: column
+    align-items: center
 
 .poster_loading
   width: 200px
@@ -36,12 +49,21 @@
     background: #ffffff03
     animation: loading 1s linear infinite
 
+.movie_data_loading
+  @include responsive(map.get($breakpoints, "lg"))
+    display: flex
+    flex-direction: column
+    align-items: center
+
 .title_loading
   width: 350px
   height: 35px
   position: relative
   margin-bottom: 20px
   background-color: #040404
+
+  @include responsive(map.get($breakpoints, "lg"))
+    width: 250px
 
   &::after
     width: 0%
@@ -108,6 +130,9 @@
   flex-direction: column
   align-items: center
 
+  @include responsive(map.get($breakpoints, "lg"))
+    gap: 20px
+
 .synopsis_loading
   width: 700px
   height: 130px
@@ -115,6 +140,9 @@
   position: relative
   border-radius: 5px
   background-color: #040404
+
+  @include responsive(map.get($breakpoints, "lg"))
+    width: 350px
 
   &::after
     width: 0%
@@ -132,6 +160,9 @@
 .movie_info_loading
   display: flex
   gap: 20px
+
+  @include responsive(map.get($breakpoints, "lg"))
+    flex-direction: column
 
   div
     width: 130px
@@ -168,6 +199,9 @@
   grid-template-columns: 1fr 1fr
   gap: 10px
 
+  @include responsive(map.get($breakpoints, "lg"))
+    grid-template-columns: 1fr
+
   div
     width: 100%
     height: 70px
@@ -194,6 +228,10 @@
   position: relative
   border-radius: 10px
   background-color: #040404
+
+  @include responsive(map.get($breakpoints, "lg"))
+    width: 350px
+    height: 200px
 
   &::after
     width: 0%
