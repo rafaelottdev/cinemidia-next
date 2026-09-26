@@ -4,6 +4,8 @@ Aplicação web para explorar filmes e séries utilizando a API do TMDB.
 
 O **Cinemidia Next** é uma evolução do projeto [Cinemidia](https://github.com/rafaelottdev/cinemidia), originalmente desenvolvido em Vue.js. Nesta versão, o projeto foi reconstruído com **Next.js, React, TypeScript e Sass**, com foco em uma arquitetura mais moderna, melhor experiência de usuário, performance e qualidade de código.
 
+Projeto em Produção: [https://cinemidia-next.vercel.app](https://cinemidia-next.vercel.app/)
+
 ## Preview
 
 <img width="380" height="200" alt="Captura de tela 2026-09-21 104721" src="https://github.com/user-attachments/assets/f4d57eca-497b-42d1-8309-0bf77361d554" />
