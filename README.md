@@ -2,11 +2,46 @@
 
 Aplicação web para explorar filmes e séries utilizando a API do TMDB.
 
-O **Cinemidia Next** é uma evolução do projeto [Cinemidia](https://github.com/rafaelottdev/cinemidia), originalmente desenvolvido em Vue.js. Nesta versão, o projeto foi reconstruído com **Next.js, React, TypeScript e Sass**, com foco em uma arquitetura mais moderna, melhor experiência de usuário, performance e qualidade de código.
+O **Cinemidia Next** é uma evolução do projeto [Cinemidia](https://github.com/rafaelottdev/cinemidia), originalmente desenvolvido em Vue.js. Nesta versão, o projeto foi reconstruído com **Next.js, React, TypeScript e Sass**, com foco em uma arquitetura mais moderna, performance, experiência de usuário e qualidade de código.
 
-Projeto em Produção: [https://cinemidia-next.vercel.app](https://cinemidia-next.vercel.app/)
+## 🛠️ Stack e ferramentas
+
+> Principais tecnologias, ferramentas e padrões utilizados no projeto.
+
+### Front-end
+
+* **Next.js**
+* **React**
+* **TypeScript**
+* **Sass**
+
+### Testes
+
+* **Vitest** — testes unitários
+* **MSW** — mock de APIs
+* **Playwright** — testes End-to-End (E2E)
+
+### Qualidade e padronização
+
+* **Biome** — formatação e análise estática
+* **Husky** — Git Hooks
+* **Commitlint** — validação das mensagens de commit
+* **Conventional Commits** — padronização dos commits
+
+### CI/CD e Git
+
+* **GitHub Actions** — CI
+* **Pull Requests**
+* **Branch protection / Rulesets**
+* Validações automatizadas antes da integração na `main`
+
+### API
+
+* **TMDB API** — dados de filmes e séries
 
 ## Preview
+
+Projeto em Produção: [https://cinemidia-next.vercel.app](https://cinemidia-next.vercel.app/)
 
 <img width="380" height="200" alt="Captura de tela 2026-09-21 104721" src="https://github.com/user-attachments/assets/f4d57eca-497b-42d1-8309-0bf77361d554" />
 <img width="130" height="230" alt="iPhone-14-Pro-393x685" src="https://github.com/user-attachments/assets/1a642ff1-0868-40e7-85ef-4c95c37b69ce" />
@@ -28,29 +63,6 @@ Projeto em Produção: [https://cinemidia-next.vercel.app](https://cinemidia-nex
 * Indicação da página atual durante a navegação
 * Interface responsiva para desktop e mobile
 
-## Tecnologias
-
-### Front-end
-
-* Next.js
-* React
-* TypeScript
-* Sass
-
-### API
-
-* TMDB API
-
-### Qualidade e desenvolvimento
-
-* Biome
-* Vitest
-* Playwright
-* Husky
-* Commitlint
-* Conventional Commits
-* GitHub Actions (CI)
-
 ## Performance
 
 O projeto utiliza recursos do Next.js para melhorar o carregamento e a experiência de navegação:
@@ -69,26 +81,49 @@ O projeto possui ferramentas e processos para manter um padrão de qualidade dur
 
 ### Biome
 
-Utilizado para formatação e análise estática do código, mantendo um padrão consistente no projeto.
+Utilizado para **formatação e análise estática do código**, mantendo um padrão consistente no projeto.
 
 ### Testes
 
-Os testes são realizados utilizando:
+O projeto possui diferentes níveis de testes automatizados:
 
-* **Vitest** para testes automatizados
+* **Vitest** para testes unitários
+* **MSW** para simulação de requisições à API
 * **Playwright** para testes End-to-End
+
+Os testes são executados localmente e também fazem parte do processo de validação automatizada.
 
 ### CI
 
-O projeto possui uma pipeline de **CI com GitHub Actions**, utilizada para validar o código automaticamente.
+O projeto possui uma pipeline de **CI com GitHub Actions**, responsável por executar automaticamente as validações do projeto.
+
+Entre as verificações estão:
+
+* Instalação das dependências
+* Lint e formatação
+* Testes automatizados
+* Testes E2E
+* Build da aplicação
 
 ### Git Hooks
 
-O **Husky** executa verificações antes dos commits, enquanto o **Commitlint** garante que as mensagens sigam o padrão definido pelo **Conventional Commits**.
+O **Husky** executa verificações durante o fluxo de Git.
+
+O **Commitlint** valida as mensagens de commit, seguindo o padrão definido pelo **Conventional Commits**.
+
+Exemplo:
+
+```text
+feat: add movie search
+fix: correct watchlist persistence
+test: add movie service tests
+```
 
 ### Proteção da branch principal
 
-A branch `main` possui regras para impedir pushes diretos, fazendo com que alterações sejam integradas através do fluxo de Pull Requests.
+A branch `main` possui regras de proteção para evitar alterações diretas.
+
+As alterações devem passar pelo fluxo de **Pull Request**, permitindo que as validações automatizadas sejam executadas antes da integração.
 
 ## Integração com TMDB
 
@@ -138,7 +173,7 @@ A chave da API pode ser obtida através da [TMDB](https://www.themoviedb.org/).
 
 ## Evolução do projeto
 
-O Cinemidia Next foi desenvolvido como uma evolução do Cinemidia original, trazendo melhorias significativas em arquitetura, experiência de usuário e qualidade de desenvolvimento.
+O Cinemidia Next foi desenvolvido como uma evolução do Cinemidia original, trazendo melhorias em arquitetura, experiência de usuário e qualidade de desenvolvimento.
 
 Entre as principais evoluções estão:
 
@@ -152,10 +187,15 @@ Entre as principais evoluções estão:
 * Mais informações nos cards
 * Watchlist com feedback visual
 * SSR, CSR e cache
-* Testes automatizados
-* CI/CD e validações automatizadas
+* Testes unitários com Vitest
+* Mock de APIs com MSW
+* Testes End-to-End com Playwright
+* CI com GitHub Actions
 * Padronização de commits
-* Fluxo de desenvolvimento com proteção da branch principal
+* Git Hooks com Husky
+* Validação de commits com Commitlint
+* Fluxo de desenvolvimento com Pull Requests
+* Proteção da branch principal
 
 ## Desenvolvido por
 
