@@ -1,0 +1,41 @@
+$kind: collection
+scripts:
+  - type: http:afterResponse
+    code: "pm.test(\"Status code is 200\", () => {\r
+
+      \    pm.response.to.have.status(200)\r
+
+      })\r
+
+      \r
+
+      pm.test(\"Response must be JSON\", () => {\r
+
+      \    pm.response.to.be.json\r
+
+      })\r
+
+      \r
+
+      pm.test(\"response must have Content-Type\", () => {\r
+
+      \  const hasContentType = pm.response.headers.has(\"Content-Type\")\r
+
+      \r
+
+      \  pm.expect(hasContentType).to.be.true\r
+
+      })\r
+
+      \r
+
+      pm.test(\"Content-Type is JSON\", () => {\r
+
+      \    const contentType = pm.response.headers.get(\"Content-Type\")\r
+
+      \        \r
+
+      \    pm.expect(contentType).to.include(\"application/json\")\r
+
+      })\r\n"
+    language: text/javascript

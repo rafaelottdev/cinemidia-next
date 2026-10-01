@@ -36,3 +36,8 @@ jobs:
 
       - name: Run Playwright tests
         run: npm run test:e2e
+
+      - name: Run Postman tests
+        uses: postmanlabs/postman-cli-action@v1
+        with:
+          command: "collection run ./src/tests/postman/collections/cinemidia --environment ./src/tests/postman/environments/url-variables.environment.yaml"
