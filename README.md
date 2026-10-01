@@ -20,6 +20,7 @@ O **Cinemidia Next** é uma evolução do projeto [Cinemidia](https://github.com
 * **Vitest** — testes unitários
 * **MSW** — mock de APIs
 * **Playwright** — testes End-to-End (E2E)
+* **Postman** — testes de API
 
 ### Qualidade e padronização
 
@@ -90,6 +91,7 @@ O projeto possui diferentes níveis de testes automatizados:
 * **Vitest** para testes unitários
 * **MSW** para simulação de requisições à API
 * **Playwright** para testes End-to-End
+* **Postman** para testes de API
 
 Os testes são executados localmente e também fazem parte do processo de validação automatizada.
 
@@ -190,6 +192,7 @@ Entre as principais evoluções estão:
 * Testes unitários com Vitest
 * Mock de APIs com MSW
 * Testes End-to-End com Playwright
+* Testes de API com Postman
 * CI com GitHub Actions
 * Padronização de commits
 * Git Hooks com Husky
