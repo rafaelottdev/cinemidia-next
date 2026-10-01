@@ -1,0 +1,14 @@
+name: url-variables
+values:
+  - key: BASE_URL
+    value: 'https://api.themoviedb.org/3'
+  - key: TMDB_IMG_URL
+    value: 'https://image.tmdb.org/t/p'
+  - key: TMBD_IMG_URL_300
+    value: 'https://image.tmdb.org/t/p/w342'
+  - key: API_KEY
+    value: 129b3b33196209a2f32976644976b80a
+  - key: movieId
+    value: 969681
+  - key: seriesId
+    value: 91759

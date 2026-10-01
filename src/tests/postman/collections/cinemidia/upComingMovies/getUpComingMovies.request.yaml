@@ -1,0 +1,96 @@
+$kind: http-request
+url: "{{BASE_URL}}/movie/upcoming?api_key={{API_KEY}}&language=pt-BR&page=1"
+method: GET
+queryParams:
+  api_key: "{{API_KEY}}"
+  language: pt-BR
+  page: "1"
+scripts:
+  - type: afterResponse
+    code: "const data = pm.response.json()\r
+
+      const results = data.results\r
+
+      \r
+
+      pm.test(\"Page is greater than 0\", () => {\r
+
+      \    pm.expect(data.page).to.be.greaterThan(0)\r
+
+      })\r
+
+      \r
+
+      pm.test(\"Response contains results\", () => {\r
+
+      \    pm.expect(data).to.have.property(\"results\")\r
+
+      })\r
+
+      \r
+
+      pm.test(\"Results is an array\", () => {\r
+
+      \    pm.expect(results).to.be.an(\"array\")\r
+
+      })\r
+
+      \r
+
+      pm.test(\"Results is not empty\", () => {\r
+
+      \    pm.expect(results).to.have.length.above(0)\r
+
+      })\r
+
+      \r
+
+      pm.test(\"Movies have required properties\", () => {\r
+
+      \  results.forEach((movie) => {\r
+
+      \    pm.expect(movie).to.have.property(\"backdrop_path\")\r
+
+      \    pm.expect(movie).to.have.property(\"genre_ids\")\r
+
+      \    pm.expect(movie).to.have.property(\"id\")\r
+
+      \    pm.expect(movie).to.have.property(\"overview\")\r
+
+      \    pm.expect(movie).to.have.property(\"poster_path\")\r
+
+      \    pm.expect(movie).to.have.property(\"title\")\r
+
+      \  })\r
+
+      })\r
+
+      \r
+
+      pm.test(\"Movie properties have correct types\", () => {\r
+
+      \  results.forEach((movie) => {\r
+
+      \    pm.expect(movie.id).to.be.a(\"number\")\r
+
+      \    pm.expect(movie.genre_ids).to.be.an(\"array\")\r
+
+      \    pm.expect(movie.title).to.be.a(\"string\")\r
+
+      \  })\r
+
+      })\r
+
+      \r
+
+      pm.test(\"Movie vote average is between 0 and 10\", () => {\r
+
+      \  results.forEach((movie) => {\r
+
+      \     pm.expect(movie.vote_average).to.be.within(0, 10)\r
+
+      \  })\r
+
+      })\r\n"
+    language: text/javascript
+order: 1790808457334

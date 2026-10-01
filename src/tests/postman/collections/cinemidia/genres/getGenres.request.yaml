@@ -1,0 +1,55 @@
+$kind: http-request
+url: "{{BASE_URL}}/genre/movie/list?api_key={{API_KEY}}&language=pt-BR"
+method: GET
+queryParams:
+  api_key: "{{API_KEY}}"
+  language: pt-BR
+scripts:
+  - type: afterResponse
+    code: "const data = pm.response.json()\r
+
+      \r
+
+      pm.test(\"Genres is an array\", () => {\r
+
+      \    pm.expect(data.genres).to.be.an(\"array\")\r
+
+      })\r
+
+      \r
+
+      pm.test(\"Genres is not empty\", () => {\r
+
+      \    pm.expect(data.genres.length).to.be.above(0)\r
+
+      })\r
+
+      \r
+
+      pm.test(\"Genres have required properties\", () => {\r
+
+      \    data.genres.forEach((genre) => {\r
+
+      \        pm.expect(genre).to.have.property(\"id\")\r
+
+      \        pm.expect(genre).to.have.property(\"name\")\r
+
+      \    })\r
+
+      })\r
+
+      \r
+
+      pm.test(\"Genres properties have correct types\", () => {\r
+
+      \    data.genres.forEach((genre) => {\r
+
+      \        pm.expect(genre.id).to.be.a(\"number\")\r
+
+      \        pm.expect(genre.name).to.be.a(\"string\")\r
+
+      \    })\r
+
+      })\r\n"
+    language: text/javascript
+order: 1790808306197

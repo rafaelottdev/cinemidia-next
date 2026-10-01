@@ -1,0 +1,51 @@
+$kind: http-request
+url: "{{BASE_URL}}/movie/{{movieId}}?api_key={{API_KEY}}&language=pt-BR"
+method: GET
+queryParams:
+  api_key: "{{API_KEY}}"
+  language: pt-BR
+scripts:
+  - type: afterResponse
+    code: "const data = pm.response.json()\r
+
+      \r
+
+      pm.test(\"Movies have required properties\", () => {\r
+
+      \    pm.expect(data).to.have.property(\"id\")\r
+
+      \    pm.expect(data).to.have.property(\"genres\")\r
+
+      \    pm.expect(data).to.have.property(\"title\")\r
+
+      \    pm.expect(data).to.have.property(\"backdrop_path\")\r
+
+      \    pm.expect(data).to.have.property(\"poster_path\")\r
+
+      })\r
+
+      \r
+
+      pm.test(\"Movie properties have correct types\", () => {\r
+
+      \    pm.expect(data.id).to.be.a(\"number\")\r
+
+      \    pm.expect(data.genres).to.be.an(\"array\")\r
+
+      \    pm.expect(data.title).to.be.a(\"string\")\r
+
+      \    pm.expect(data.backdrop_path).to.be.a(\"string\")\r
+
+      \    pm.expect(data.poster_path).to.be.a(\"string\")\r
+
+      })\r
+
+      \r
+
+      pm.test(\"Movie vote average is between 0 and 10\", () => {\r
+
+      \    pm.expect(data.vote_average).to.be.within(0, 10)\r
+
+      })\r\n"
+    language: text/javascript
+order: 1790815894822

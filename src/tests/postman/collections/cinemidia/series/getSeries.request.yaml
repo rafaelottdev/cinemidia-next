@@ -1,0 +1,103 @@
+$kind: http-request
+url: "{{BASE_URL}}/discover/tv?api_key={{API_KEY}}&page=1"
+method: GET
+queryParams:
+  api_key: "{{API_KEY}}"
+  page: "1"
+scripts:
+  - type: afterResponse
+    code: "const data = pm.response.json()\r
+
+      const results = data.results\r
+
+      \r
+
+      pm.test(\"Page is greater than 0\", () => {\r
+
+      \    pm.expect(data.page).to.be.greaterThan(0)\r
+
+      })\r
+
+      \r
+
+      pm.test(\"Response contains results\", () => {\r
+
+      \    pm.expect(data).to.have.property(\"results\")\r
+
+      })\r
+
+      \r
+
+      pm.test(\"Results is an array\", () => {\r
+
+      \    pm.expect(results).to.be.an(\"array\")\r
+
+      })\r
+
+      \r
+
+      pm.test(\"Results is not empty\", () => {\r
+
+      \    pm.expect(results).to.have.length.above(0)\r
+
+      })\r
+
+      \r
+
+      if(results.length > 0) {\r
+
+      \    pm.environment.set(\"seriesId\", data.results[0].id)\r
+
+      }\r
+
+      \r
+
+      pm.test(\"Series have required properties\", () => {\r
+
+      \  results.forEach((series) => {\r
+
+      \    pm.expect(series).to.have.property(\"backdrop_path\")\r
+
+      \    pm.expect(series).to.have.property(\"genre_ids\")\r
+
+      \    pm.expect(series).to.have.property(\"id\")\r
+
+      \    pm.expect(series).to.have.property(\"overview\")\r
+
+      \    pm.expect(series).to.have.property(\"poster_path\")\r
+
+      \    pm.expect(series).to.have.property(\"name\")\r
+
+      \  })\r
+
+      })\r
+
+      \r
+
+      pm.test(\"Series properties have correct types\", () => {\r
+
+      \  results.forEach((series) => {\r
+
+      \    pm.expect(series.id).to.be.a(\"number\")\r
+
+      \    pm.expect(series.genre_ids).to.be.an(\"array\")\r
+
+      \    pm.expect(series.name).to.be.a(\"string\")\r
+
+      \  })\r
+
+      })\r
+
+      \r
+
+      pm.test(\"Series vote average is between 0 and 10\", () => {\r
+
+      \  results.forEach((Series) => {\r
+
+      \     pm.expect(Series.vote_average).to.be.within(0, 10)\r
+
+      \  })\r
+
+      })\r\n"
+    language: text/javascript
+order: 1790808450173
